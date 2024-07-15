@@ -1,0 +1,1102 @@
+[
+  {
+    "serverName": "Server O9871",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 4195,
+        "requestCount": 5478,
+        "exception": 786,
+        "dataTransfer": 16434
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 469,
+        "requestCount": 501,
+        "exception": 19,
+        "dataTransfer": 1503
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 2164,
+        "requestCount": 4002,
+        "exception": 783,
+        "dataTransfer": 4002
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 1353,
+        "requestCount": 2298,
+        "exception": 591,
+        "dataTransfer": 2298
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 2762,
+        "requestCount": 5515,
+        "exception": 474,
+        "dataTransfer": 5515
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 3435,
+        "requestCount": 5518,
+        "exception": 2089,
+        "dataTransfer": 5518
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 1255,
+        "requestCount": 2267,
+        "exception": 1098,
+        "dataTransfer": 6801
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 4651,
+        "requestCount": 7968,
+        "exception": 1361,
+        "dataTransfer": 15936
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 1955,
+        "requestCount": 2887,
+        "exception": 270,
+        "dataTransfer": 8661
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 4829,
+        "requestCount": 7510,
+        "exception": 1304,
+        "dataTransfer": 7510
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 3570,
+        "requestCount": 6387,
+        "exception": 1369,
+        "dataTransfer": 12774
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 4433,
+        "requestCount": 8595,
+        "exception": 1031,
+        "dataTransfer": 8595
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 1311,
+        "requestCount": 2471,
+        "exception": 439,
+        "dataTransfer": 4942
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1268,
+        "requestCount": 1578,
+        "exception": 485,
+        "dataTransfer": 4734
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 4367,
+        "requestCount": 7571,
+        "exception": 2960,
+        "dataTransfer": 15142
+      }
+    ]
+  },
+  {
+    "serverName": "Server M5571",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 1505,
+        "requestCount": 1864,
+        "exception": 19,
+        "dataTransfer": 5592
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 863,
+        "requestCount": 1419,
+        "exception": 141,
+        "dataTransfer": 4257
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 1602,
+        "requestCount": 2394,
+        "exception": 1023,
+        "dataTransfer": 4788
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 3013,
+        "requestCount": 4931,
+        "exception": 515,
+        "dataTransfer": 4931
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 1175,
+        "requestCount": 1822,
+        "exception": 737,
+        "dataTransfer": 5466
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 2732,
+        "requestCount": 4073,
+        "exception": 1256,
+        "dataTransfer": 4073
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 1743,
+        "requestCount": 1773,
+        "exception": 865,
+        "dataTransfer": 5319
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 3857,
+        "requestCount": 6785,
+        "exception": 556,
+        "dataTransfer": 6785
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 2410,
+        "requestCount": 2993,
+        "exception": 948,
+        "dataTransfer": 5986
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 1102,
+        "requestCount": 1852,
+        "exception": 526,
+        "dataTransfer": 1852
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 1639,
+        "requestCount": 3222,
+        "exception": 125,
+        "dataTransfer": 6444
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 2981,
+        "requestCount": 4398,
+        "exception": 435,
+        "dataTransfer": 8796
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 4476,
+        "requestCount": 5730,
+        "exception": 1773,
+        "dataTransfer": 11460
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 3481,
+        "requestCount": 4629,
+        "exception": 717,
+        "dataTransfer": 9258
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 2167,
+        "requestCount": 3165,
+        "exception": 238,
+        "dataTransfer": 3165
+      }
+    ]
+  },
+  {
+    "serverName": "Server X6049",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 537,
+        "requestCount": 817,
+        "exception": 81,
+        "dataTransfer": 2451
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 436,
+        "requestCount": 775,
+        "exception": 279,
+        "dataTransfer": 1550
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 977,
+        "requestCount": 1268,
+        "exception": 570,
+        "dataTransfer": 2536
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 4075,
+        "requestCount": 5582,
+        "exception": 1942,
+        "dataTransfer": 5582
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 944,
+        "requestCount": 1501,
+        "exception": 346,
+        "dataTransfer": 1501
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 1133,
+        "requestCount": 1645,
+        "exception": 4,
+        "dataTransfer": 3290
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 2759,
+        "requestCount": 3350,
+        "exception": 14,
+        "dataTransfer": 3350
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 2312,
+        "requestCount": 3516,
+        "exception": 342,
+        "dataTransfer": 7032
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 265,
+        "requestCount": 462,
+        "exception": 221,
+        "dataTransfer": 462
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 4694,
+        "requestCount": 9157,
+        "exception": 2520,
+        "dataTransfer": 27471
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 4811,
+        "requestCount": 8324,
+        "exception": 1967,
+        "dataTransfer": 16648
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 2964,
+        "requestCount": 5370,
+        "exception": 2597,
+        "dataTransfer": 5370
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 3161,
+        "requestCount": 6138,
+        "exception": 405,
+        "dataTransfer": 6138
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1433,
+        "requestCount": 2776,
+        "exception": 641,
+        "dataTransfer": 5552
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 748,
+        "requestCount": 1414,
+        "exception": 133,
+        "dataTransfer": 2828
+      }
+    ]
+  },
+  {
+    "serverName": "Server C8962",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 1605,
+        "requestCount": 2902,
+        "exception": 1388,
+        "dataTransfer": 8706
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 4683,
+        "requestCount": 9246,
+        "exception": 4090,
+        "dataTransfer": 18492
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 413,
+        "requestCount": 492,
+        "exception": 52,
+        "dataTransfer": 492
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 841,
+        "requestCount": 1004,
+        "exception": 197,
+        "dataTransfer": 1004
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 4498,
+        "requestCount": 8117,
+        "exception": 1553,
+        "dataTransfer": 24351
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 499,
+        "requestCount": 985,
+        "exception": 114,
+        "dataTransfer": 2955
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 2539,
+        "requestCount": 4242,
+        "exception": 1684,
+        "dataTransfer": 4242
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 4748,
+        "requestCount": 7946,
+        "exception": 2692,
+        "dataTransfer": 15892
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 3893,
+        "requestCount": 5585,
+        "exception": 92,
+        "dataTransfer": 16755
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 1738,
+        "requestCount": 1787,
+        "exception": 410,
+        "dataTransfer": 1787
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 4553,
+        "requestCount": 5093,
+        "exception": 1335,
+        "dataTransfer": 15279
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 1336,
+        "requestCount": 1868,
+        "exception": 272,
+        "dataTransfer": 3736
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 1544,
+        "requestCount": 1984,
+        "exception": 479,
+        "dataTransfer": 3968
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1264,
+        "requestCount": 2506,
+        "exception": 583,
+        "dataTransfer": 5012
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 4004,
+        "requestCount": 5791,
+        "exception": 2086,
+        "dataTransfer": 5791
+      }
+    ]
+  },
+  {
+    "serverName": "Server S8688",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 2256,
+        "requestCount": 3699,
+        "exception": 1238,
+        "dataTransfer": 3699
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 3919,
+        "requestCount": 5762,
+        "exception": 596,
+        "dataTransfer": 11524
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 2533,
+        "requestCount": 3340,
+        "exception": 181,
+        "dataTransfer": 10020
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 3057,
+        "requestCount": 5517,
+        "exception": 1253,
+        "dataTransfer": 16551
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 3187,
+        "requestCount": 6084,
+        "exception": 679,
+        "dataTransfer": 12168
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 4540,
+        "requestCount": 7030,
+        "exception": 3511,
+        "dataTransfer": 7030
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 3059,
+        "requestCount": 5798,
+        "exception": 2403,
+        "dataTransfer": 5798
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 1224,
+        "requestCount": 1353,
+        "exception": 657,
+        "dataTransfer": 2706
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 3935,
+        "requestCount": 4270,
+        "exception": 2036,
+        "dataTransfer": 12810
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 203,
+        "requestCount": 372,
+        "exception": 21,
+        "dataTransfer": 744
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 3029,
+        "requestCount": 5511,
+        "exception": 728,
+        "dataTransfer": 11022
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 1555,
+        "requestCount": 2600,
+        "exception": 440,
+        "dataTransfer": 5200
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 2073,
+        "requestCount": 2515,
+        "exception": 1154,
+        "dataTransfer": 2515
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1900,
+        "requestCount": 1957,
+        "exception": 545,
+        "dataTransfer": 3914
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 3958,
+        "requestCount": 6911,
+        "exception": 376,
+        "dataTransfer": 13822
+      }
+    ]
+  },
+  {
+    "serverName": "Server J6058",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 3035,
+        "requestCount": 4030,
+        "exception": 274,
+        "dataTransfer": 4030
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 1720,
+        "requestCount": 2170,
+        "exception": 527,
+        "dataTransfer": 6510
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 4436,
+        "requestCount": 8548,
+        "exception": 3675,
+        "dataTransfer": 17096
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 3330,
+        "requestCount": 4372,
+        "exception": 1154,
+        "dataTransfer": 13116
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 2882,
+        "requestCount": 3149,
+        "exception": 541,
+        "dataTransfer": 3149
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 4708,
+        "requestCount": 7180,
+        "exception": 445,
+        "dataTransfer": 14360
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 3579,
+        "requestCount": 5461,
+        "exception": 881,
+        "dataTransfer": 10922
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 3304,
+        "requestCount": 4032,
+        "exception": 1104,
+        "dataTransfer": 8064
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 735,
+        "requestCount": 1366,
+        "exception": 226,
+        "dataTransfer": 2732
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 1860,
+        "requestCount": 3415,
+        "exception": 1697,
+        "dataTransfer": 10245
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 4341,
+        "requestCount": 6842,
+        "exception": 1076,
+        "dataTransfer": 13684
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 2003,
+        "requestCount": 3582,
+        "exception": 1708,
+        "dataTransfer": 7164
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 3810,
+        "requestCount": 4554,
+        "exception": 94,
+        "dataTransfer": 13662
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 3594,
+        "requestCount": 3912,
+        "exception": 1212,
+        "dataTransfer": 3912
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 2747,
+        "requestCount": 4784,
+        "exception": 416,
+        "dataTransfer": 4784
+      }
+    ]
+  },
+  {
+    "serverName": "Server D5045",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 1386,
+        "requestCount": 2056,
+        "exception": 153,
+        "dataTransfer": 6168
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 4285,
+        "requestCount": 6617,
+        "exception": 2807,
+        "dataTransfer": 13234
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 4727,
+        "requestCount": 5903,
+        "exception": 1197,
+        "dataTransfer": 5903
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 2246,
+        "requestCount": 3346,
+        "exception": 684,
+        "dataTransfer": 10038
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 4644,
+        "requestCount": 6908,
+        "exception": 1820,
+        "dataTransfer": 13816
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 2903,
+        "requestCount": 4209,
+        "exception": 1797,
+        "dataTransfer": 4209
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 3606,
+        "requestCount": 7196,
+        "exception": 188,
+        "dataTransfer": 14392
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 3639,
+        "requestCount": 4461,
+        "exception": 1708,
+        "dataTransfer": 13383
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 2849,
+        "requestCount": 3389,
+        "exception": 856,
+        "dataTransfer": 6778
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 3359,
+        "requestCount": 6358,
+        "exception": 280,
+        "dataTransfer": 12716
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 340,
+        "requestCount": 468,
+        "exception": 227,
+        "dataTransfer": 468
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 4465,
+        "requestCount": 4810,
+        "exception": 1564,
+        "dataTransfer": 9620
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 1276,
+        "requestCount": 1332,
+        "exception": 233,
+        "dataTransfer": 3996
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1556,
+        "requestCount": 1846,
+        "exception": 27,
+        "dataTransfer": 1846
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 986,
+        "requestCount": 1232,
+        "exception": 202,
+        "dataTransfer": 3696
+      }
+    ]
+  },
+  {
+    "serverName": "Server O5595",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 4905,
+        "requestCount": 6431,
+        "exception": 1792,
+        "dataTransfer": 12862
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 338,
+        "requestCount": 391,
+        "exception": 137,
+        "dataTransfer": 782
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 1579,
+        "requestCount": 1778,
+        "exception": 250,
+        "dataTransfer": 1778
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 4259,
+        "requestCount": 6419,
+        "exception": 1271,
+        "dataTransfer": 12838
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 2205,
+        "requestCount": 2623,
+        "exception": 111,
+        "dataTransfer": 7869
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 524,
+        "requestCount": 637,
+        "exception": 310,
+        "dataTransfer": 1911
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 1730,
+        "requestCount": 1805,
+        "exception": 527,
+        "dataTransfer": 5415
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 860,
+        "requestCount": 1189,
+        "exception": 246,
+        "dataTransfer": 3567
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 5000,
+        "requestCount": 8265,
+        "exception": 364,
+        "dataTransfer": 8265
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 3087,
+        "requestCount": 3157,
+        "exception": 1213,
+        "dataTransfer": 6314
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 609,
+        "requestCount": 725,
+        "exception": 47,
+        "dataTransfer": 725
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 2011,
+        "requestCount": 2125,
+        "exception": 189,
+        "dataTransfer": 6375
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 3554,
+        "requestCount": 6837,
+        "exception": 1543,
+        "dataTransfer": 20511
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1177,
+        "requestCount": 1286,
+        "exception": 216,
+        "dataTransfer": 2572
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 4601,
+        "requestCount": 5378,
+        "exception": 2530,
+        "dataTransfer": 16134
+      }
+    ]
+  },
+  {
+    "serverName": "Server L4116",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 970,
+        "requestCount": 1023,
+        "exception": 487,
+        "dataTransfer": 3069
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 3541,
+        "requestCount": 6211,
+        "exception": 1519,
+        "dataTransfer": 12422
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 4889,
+        "requestCount": 8782,
+        "exception": 4357,
+        "dataTransfer": 17564
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 3154,
+        "requestCount": 5951,
+        "exception": 2169,
+        "dataTransfer": 17853
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 1910,
+        "requestCount": 2731,
+        "exception": 836,
+        "dataTransfer": 8193
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 2199,
+        "requestCount": 4221,
+        "exception": 11,
+        "dataTransfer": 12663
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 36,
+        "requestCount": 52,
+        "exception": 17,
+        "dataTransfer": 52
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 1742,
+        "requestCount": 2039,
+        "exception": 47,
+        "dataTransfer": 4078
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 1770,
+        "requestCount": 2234,
+        "exception": 610,
+        "dataTransfer": 6702
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 2671,
+        "requestCount": 2748,
+        "exception": 990,
+        "dataTransfer": 5496
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 4530,
+        "requestCount": 6996,
+        "exception": 2726,
+        "dataTransfer": 6996
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 2184,
+        "requestCount": 2834,
+        "exception": 98,
+        "dataTransfer": 8502
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 2536,
+        "requestCount": 4380,
+        "exception": 470,
+        "dataTransfer": 4380
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 1856,
+        "requestCount": 2177,
+        "exception": 532,
+        "dataTransfer": 6531
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 2595,
+        "requestCount": 4685,
+        "exception": 1143,
+        "dataTransfer": 9370
+      }
+    ]
+  },
+  {
+    "serverName": "Server J5392",
+    "data": [
+      {
+        "timestamp": "2024-03-03T18:03:12+00:00",
+        "activeUsers": 734,
+        "requestCount": 1375,
+        "exception": 61,
+        "dataTransfer": 2750
+      },
+      {
+        "timestamp": "2024-03-04T18:03:12+00:00",
+        "activeUsers": 3018,
+        "requestCount": 4590,
+        "exception": 1516,
+        "dataTransfer": 9180
+      },
+      {
+        "timestamp": "2024-03-05T18:03:12+00:00",
+        "activeUsers": 2155,
+        "requestCount": 2809,
+        "exception": 1271,
+        "dataTransfer": 2809
+      },
+      {
+        "timestamp": "2024-03-06T18:03:12+00:00",
+        "activeUsers": 2696,
+        "requestCount": 3514,
+        "exception": 675,
+        "dataTransfer": 3514
+      },
+      {
+        "timestamp": "2024-03-07T18:03:12+00:00",
+        "activeUsers": 1261,
+        "requestCount": 2022,
+        "exception": 771,
+        "dataTransfer": 2022
+      },
+      {
+        "timestamp": "2024-03-08T18:03:12+00:00",
+        "activeUsers": 3685,
+        "requestCount": 3966,
+        "exception": 1780,
+        "dataTransfer": 7932
+      },
+      {
+        "timestamp": "2024-03-09T18:03:12+00:00",
+        "activeUsers": 1979,
+        "requestCount": 2722,
+        "exception": 831,
+        "dataTransfer": 5444
+      },
+      {
+        "timestamp": "2024-03-10T18:03:12+00:00",
+        "activeUsers": 1442,
+        "requestCount": 2468,
+        "exception": 595,
+        "dataTransfer": 2468
+      },
+      {
+        "timestamp": "2024-03-11T18:03:12+00:00",
+        "activeUsers": 1873,
+        "requestCount": 3476,
+        "exception": 1077,
+        "dataTransfer": 6952
+      },
+      {
+        "timestamp": "2024-03-12T18:03:12+00:00",
+        "activeUsers": 3381,
+        "requestCount": 4586,
+        "exception": 508,
+        "dataTransfer": 4586
+      },
+      {
+        "timestamp": "2024-03-13T18:03:12+00:00",
+        "activeUsers": 3928,
+        "requestCount": 6062,
+        "exception": 645,
+        "dataTransfer": 6062
+      },
+      {
+        "timestamp": "2024-03-14T18:03:12+00:00",
+        "activeUsers": 4139,
+        "requestCount": 8214,
+        "exception": 3479,
+        "dataTransfer": 8214
+      },
+      {
+        "timestamp": "2024-03-15T18:03:12+00:00",
+        "activeUsers": 2668,
+        "requestCount": 3837,
+        "exception": 169,
+        "dataTransfer": 3837
+      },
+      {
+        "timestamp": "2024-03-16T18:03:12+00:00",
+        "activeUsers": 984,
+        "requestCount": 1194,
+        "exception": 583,
+        "dataTransfer": 1194
+      },
+      {
+        "timestamp": "2024-03-17T18:03:12+00:00",
+        "activeUsers": 2537,
+        "requestCount": 3367,
+        "exception": 86,
+        "dataTransfer": 3367
+      }
+    ]
+  }
+]

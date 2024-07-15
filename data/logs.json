@@ -1,0 +1,298 @@
+[
+  {
+    "timestamp": "26-Feb-2024 02:26:39",
+    "message": "exiting, bye-bye!"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:26:39",
+    "message": "fpm is running, pid 2984810"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:26:39",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:26:39",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:27:39",
+    "message": "Terminating ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:27:39",
+    "message": "exiting, bye-bye!"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:27:39",
+    "message": "fpm is running, pid 2985996"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:27:39",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:27:39",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "fpm is running, pid 2985996"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:29:19",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "fpm is running, pid 2985996"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:30:15",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "fpm is running, pid 2985996"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:00",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:33",
+    "message": "Terminating ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:33",
+    "message": "exiting, bye-bye!"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:33",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:33",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:31:33",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:19",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:19",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:20",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:20",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:20",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:33:20",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:34:38",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:38:00",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:39:50",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:51:34",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:53:42",
+    "message": "systemd monitor interval set to 10000ms"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:57",
+    "message": "Reloading in progress ..."
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:57",
+    "message": "reloading: execvp(\"/usr/sbin/php-fpm8.3\", {\"/usr/sbin/php-fpm8.3\", \"--nodaemonize\", \"--fpm-config\", \"/etc/php/8.3/fpm/php-fpm.conf\"})"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:58",
+    "message": "using inherited socket fd=8, \"/run/php/php8.3-fpm.sock\""
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:58",
+    "message": "fpm is running, pid 2987566"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:58",
+    "message": "ready to handle connections"
+  },
+  {
+    "timestamp": "26-Feb-2024 02:56:58",
+    "message": "systemd monitor interval set to 10000ms"
+  }
+]

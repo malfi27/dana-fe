@@ -1,0 +1,652 @@
+[
+  {
+    "date": "2024-03-04",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 3980,
+        "pv": 790,
+        "amt": 4392
+      },
+      {
+        "country": "China",
+        "uv": 1886,
+        "pv": 1371,
+        "amt": 3226
+      },
+      {
+        "country": "India",
+        "uv": 3426,
+        "pv": 657,
+        "amt": 3543
+      },
+      {
+        "country": "Russia",
+        "uv": 3682,
+        "pv": 4394,
+        "amt": 2880
+      },
+      {
+        "country": "Brazil",
+        "uv": 4939,
+        "pv": 2537,
+        "amt": 1405
+      },
+      {
+        "country": "Australia",
+        "uv": 4898,
+        "pv": 4033,
+        "amt": 2482
+      },
+      {
+        "country": "Canada",
+        "uv": 3962,
+        "pv": 2921,
+        "amt": 3187
+      },
+      {
+        "country": "Germany",
+        "uv": 1044,
+        "pv": 4126,
+        "amt": 1831
+      },
+      {
+        "country": "France",
+        "uv": 1596,
+        "pv": 2717,
+        "amt": 1723
+      },
+      {
+        "country": "Japan",
+        "uv": 4955,
+        "pv": 1926,
+        "amt": 3186
+      }
+    ]
+  },
+  {
+    "date": "2024-03-05",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 4430,
+        "pv": 765,
+        "amt": 4767
+      },
+      {
+        "country": "China",
+        "uv": 4416,
+        "pv": 1189,
+        "amt": 4020
+      },
+      {
+        "country": "India",
+        "uv": 3082,
+        "pv": 2354,
+        "amt": 4083
+      },
+      {
+        "country": "Russia",
+        "uv": 1691,
+        "pv": 2147,
+        "amt": 2994
+      },
+      {
+        "country": "Brazil",
+        "uv": 3979,
+        "pv": 4225,
+        "amt": 4074
+      },
+      {
+        "country": "Australia",
+        "uv": 1869,
+        "pv": 4425,
+        "amt": 4883
+      },
+      {
+        "country": "Canada",
+        "uv": 2142,
+        "pv": 2488,
+        "amt": 3313
+      },
+      {
+        "country": "Germany",
+        "uv": 2432,
+        "pv": 3653,
+        "amt": 4408
+      },
+      {
+        "country": "France",
+        "uv": 2017,
+        "pv": 3141,
+        "amt": 2953
+      },
+      {
+        "country": "Japan",
+        "uv": 4076,
+        "pv": 4289,
+        "amt": 1478
+      }
+    ]
+  },
+  {
+    "date": "2024-03-06",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 3959,
+        "pv": 2366,
+        "amt": 1373
+      },
+      {
+        "country": "China",
+        "uv": 2213,
+        "pv": 2405,
+        "amt": 2707
+      },
+      {
+        "country": "India",
+        "uv": 4719,
+        "pv": 2983,
+        "amt": 1692
+      },
+      {
+        "country": "Russia",
+        "uv": 1341,
+        "pv": 3807,
+        "amt": 3500
+      },
+      {
+        "country": "Brazil",
+        "uv": 1687,
+        "pv": 3878,
+        "amt": 2299
+      },
+      {
+        "country": "Australia",
+        "uv": 2660,
+        "pv": 3012,
+        "amt": 1001
+      },
+      {
+        "country": "Canada",
+        "uv": 3845,
+        "pv": 2470,
+        "amt": 3894
+      },
+      {
+        "country": "Germany",
+        "uv": 4206,
+        "pv": 2985,
+        "amt": 1186
+      },
+      {
+        "country": "France",
+        "uv": 2529,
+        "pv": 4337,
+        "amt": 3512
+      },
+      {
+        "country": "Japan",
+        "uv": 4637,
+        "pv": 1628,
+        "amt": 3283
+      }
+    ]
+  },
+  {
+    "date": "2024-03-07",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 1946,
+        "pv": 4364,
+        "amt": 4199
+      },
+      {
+        "country": "China",
+        "uv": 3635,
+        "pv": 3083,
+        "amt": 1715
+      },
+      {
+        "country": "India",
+        "uv": 1498,
+        "pv": 969,
+        "amt": 3608
+      },
+      {
+        "country": "Russia",
+        "uv": 1026,
+        "pv": 3364,
+        "amt": 3313
+      },
+      {
+        "country": "Brazil",
+        "uv": 1623,
+        "pv": 2407,
+        "amt": 3006
+      },
+      {
+        "country": "Australia",
+        "uv": 3250,
+        "pv": 1438,
+        "amt": 3152
+      },
+      {
+        "country": "Canada",
+        "uv": 2745,
+        "pv": 4158,
+        "amt": 1030
+      },
+      {
+        "country": "Germany",
+        "uv": 1597,
+        "pv": 4289,
+        "amt": 4026
+      },
+      {
+        "country": "France",
+        "uv": 4579,
+        "pv": 854,
+        "amt": 3860
+      },
+      {
+        "country": "Japan",
+        "uv": 1768,
+        "pv": 2091,
+        "amt": 1495
+      }
+    ]
+  },
+  {
+    "date": "2024-03-08",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 2949,
+        "pv": 3019,
+        "amt": 1229
+      },
+      {
+        "country": "China",
+        "uv": 3237,
+        "pv": 3831,
+        "amt": 2767
+      },
+      {
+        "country": "India",
+        "uv": 4256,
+        "pv": 3106,
+        "amt": 1157
+      },
+      {
+        "country": "Russia",
+        "uv": 3105,
+        "pv": 3497,
+        "amt": 4357
+      },
+      {
+        "country": "Brazil",
+        "uv": 3161,
+        "pv": 937,
+        "amt": 1864
+      },
+      {
+        "country": "Australia",
+        "uv": 4659,
+        "pv": 1248,
+        "amt": 2892
+      },
+      {
+        "country": "Canada",
+        "uv": 3078,
+        "pv": 1585,
+        "amt": 1103
+      },
+      {
+        "country": "Germany",
+        "uv": 2384,
+        "pv": 1871,
+        "amt": 2556
+      },
+      {
+        "country": "France",
+        "uv": 1804,
+        "pv": 4285,
+        "amt": 4856
+      },
+      {
+        "country": "Japan",
+        "uv": 2403,
+        "pv": 3798,
+        "amt": 2984
+      }
+    ]
+  },
+  {
+    "date": "2024-03-09",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 2346,
+        "pv": 2717,
+        "amt": 4898
+      },
+      {
+        "country": "China",
+        "uv": 3922,
+        "pv": 2281,
+        "amt": 4515
+      },
+      {
+        "country": "India",
+        "uv": 3599,
+        "pv": 1401,
+        "amt": 4301
+      },
+      {
+        "country": "Russia",
+        "uv": 2280,
+        "pv": 2535,
+        "amt": 4932
+      },
+      {
+        "country": "Brazil",
+        "uv": 4841,
+        "pv": 1404,
+        "amt": 1282
+      },
+      {
+        "country": "Australia",
+        "uv": 1654,
+        "pv": 2574,
+        "amt": 2089
+      },
+      {
+        "country": "Canada",
+        "uv": 3214,
+        "pv": 2616,
+        "amt": 3704
+      },
+      {
+        "country": "Germany",
+        "uv": 1278,
+        "pv": 1038,
+        "amt": 4702
+      },
+      {
+        "country": "France",
+        "uv": 3812,
+        "pv": 603,
+        "amt": 1811
+      },
+      {
+        "country": "Japan",
+        "uv": 2061,
+        "pv": 1409,
+        "amt": 2634
+      }
+    ]
+  },
+  {
+    "date": "2024-03-10",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 1073,
+        "pv": 2033,
+        "amt": 1079
+      },
+      {
+        "country": "China",
+        "uv": 4569,
+        "pv": 2893,
+        "amt": 1029
+      },
+      {
+        "country": "India",
+        "uv": 4830,
+        "pv": 3978,
+        "amt": 4977
+      },
+      {
+        "country": "Russia",
+        "uv": 2337,
+        "pv": 2600,
+        "amt": 4726
+      },
+      {
+        "country": "Brazil",
+        "uv": 3312,
+        "pv": 2946,
+        "amt": 4634
+      },
+      {
+        "country": "Australia",
+        "uv": 1407,
+        "pv": 4374,
+        "amt": 3403
+      },
+      {
+        "country": "Canada",
+        "uv": 2424,
+        "pv": 3461,
+        "amt": 1353
+      },
+      {
+        "country": "Germany",
+        "uv": 3982,
+        "pv": 971,
+        "amt": 3960
+      },
+      {
+        "country": "France",
+        "uv": 3085,
+        "pv": 1421,
+        "amt": 1026
+      },
+      {
+        "country": "Japan",
+        "uv": 4177,
+        "pv": 931,
+        "amt": 1785
+      }
+    ]
+  },
+  {
+    "date": "2024-03-11",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 3527,
+        "pv": 1780,
+        "amt": 2303
+      },
+      {
+        "country": "China",
+        "uv": 2973,
+        "pv": 3952,
+        "amt": 3313
+      },
+      {
+        "country": "India",
+        "uv": 4288,
+        "pv": 3360,
+        "amt": 3968
+      },
+      {
+        "country": "Russia",
+        "uv": 4943,
+        "pv": 1715,
+        "amt": 3646
+      },
+      {
+        "country": "Brazil",
+        "uv": 3019,
+        "pv": 990,
+        "amt": 2219
+      },
+      {
+        "country": "Australia",
+        "uv": 1995,
+        "pv": 2856,
+        "amt": 1122
+      },
+      {
+        "country": "Canada",
+        "uv": 3682,
+        "pv": 1162,
+        "amt": 1513
+      },
+      {
+        "country": "Germany",
+        "uv": 3340,
+        "pv": 3712,
+        "amt": 2245
+      },
+      {
+        "country": "France",
+        "uv": 4151,
+        "pv": 3583,
+        "amt": 1778
+      },
+      {
+        "country": "Japan",
+        "uv": 3581,
+        "pv": 2221,
+        "amt": 4585
+      }
+    ]
+  },
+  {
+    "date": "2024-03-12",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 1949,
+        "pv": 520,
+        "amt": 2549
+      },
+      {
+        "country": "China",
+        "uv": 4187,
+        "pv": 1512,
+        "amt": 4829
+      },
+      {
+        "country": "India",
+        "uv": 2670,
+        "pv": 3785,
+        "amt": 2751
+      },
+      {
+        "country": "Russia",
+        "uv": 1387,
+        "pv": 2309,
+        "amt": 3662
+      },
+      {
+        "country": "Brazil",
+        "uv": 2799,
+        "pv": 858,
+        "amt": 2512
+      },
+      {
+        "country": "Australia",
+        "uv": 1786,
+        "pv": 3871,
+        "amt": 4336
+      },
+      {
+        "country": "Canada",
+        "uv": 2431,
+        "pv": 1679,
+        "amt": 3915
+      },
+      {
+        "country": "Germany",
+        "uv": 1864,
+        "pv": 1725,
+        "amt": 3517
+      },
+      {
+        "country": "France",
+        "uv": 4741,
+        "pv": 1974,
+        "amt": 3228
+      },
+      {
+        "country": "Japan",
+        "uv": 4618,
+        "pv": 3433,
+        "amt": 3111
+      }
+    ]
+  },
+  {
+    "date": "2024-03-13",
+    "data": [
+      {
+        "country": "USA",
+        "uv": 3723,
+        "pv": 648,
+        "amt": 4133
+      },
+      {
+        "country": "China",
+        "uv": 3527,
+        "pv": 1810,
+        "amt": 2845
+      },
+      {
+        "country": "India",
+        "uv": 1789,
+        "pv": 2739,
+        "amt": 1326
+      },
+      {
+        "country": "Russia",
+        "uv": 2170,
+        "pv": 3357,
+        "amt": 4097
+      },
+      {
+        "country": "Brazil",
+        "uv": 3545,
+        "pv": 1459,
+        "amt": 2611
+      },
+      {
+        "country": "Australia",
+        "uv": 1248,
+        "pv": 4133,
+        "amt": 3274
+      },
+      {
+        "country": "Canada",
+        "uv": 3465,
+        "pv": 1259,
+        "amt": 2925
+      },
+      {
+        "country": "Germany",
+        "uv": 2842,
+        "pv": 2483,
+        "amt": 2799
+      },
+      {
+        "country": "France",
+        "uv": 1002,
+        "pv": 4232,
+        "amt": 2835
+      },
+      {
+        "country": "Japan",
+        "uv": 3805,
+        "pv": 842,
+        "amt": 3817
+      }
+    ]
+  }
+]
