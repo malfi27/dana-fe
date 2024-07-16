@@ -1,6 +1,7 @@
 // axios setup
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { headers } from 'next/headers'
 
 // Mendapatkan token dari cookies
 const authToken = Cookies.get('accessToken')
@@ -14,5 +15,8 @@ export const axiosApi = axios.create({
 })
 
 export const axiosWhatsappApi = axios.create({
-  baseURL: process.env.WHATSAPP_API_URL
+  baseURL: process.env.WHATSAPP_API_URL,
+  headers: {
+    'Content-Type': 'application/json'
+  }
 })

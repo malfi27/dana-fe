@@ -2,7 +2,9 @@
 
 import { useCreateWhatsapp } from '@/app/api/whatsapp/create-whatsapp'
 import { useGenerateQRCode } from '@/app/api/whatsapp/scan-whatsapp'
+import { Note, NoteDescription, NoteTitle } from '@/components/ui'
 import { waitForApiResponse } from '@/lib/utils'
+import Image from 'next/image'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from 'ui/button'
@@ -15,15 +17,19 @@ export function WhatsappSessionForm() {
   })
 
   //Data fetching
-  const { mutateAsync } = useCreateWhatsapp()
-  const { mutateAsync: mutateGenerateQrCode } = useGenerateQRCode()
+  const { data: resAccount, mutateAsync, isPending } = useCreateWhatsapp()
+  const {
+    data: resQr,
+    mutateAsync: mutateGenerateQrCode,
+    isPending: pendingGenerateQR
+  } = useGenerateQRCode()
+
   return (
     <Form
       onSubmit={(e) => {
         e.preventDefault()
         //change from string to number
         const whatsapp_number = parseInt(form.whatsapp_number)
-        console.log(whatsapp_number)
 
         toast.promise(
           waitForApiResponse(
@@ -34,8 +40,6 @@ export function WhatsappSessionForm() {
               {
                 onSuccess: (data) => {
                   if (data?.status === 200) {
-                    console.log('Success')
-                    console.log(data)
                     toast.promise(
                       waitForApiResponse(
                         mutateGenerateQrCode({
@@ -62,26 +66,58 @@ export function WhatsappSessionForm() {
       }}
       className="space-y-4"
     >
-      <TextField
-        isRequired
-        label="Whatsapp Number"
-        prefix={'+62'}
-        placeholder="812*****"
-        value={form.whatsapp_number}
-        name="whatsapp_number"
-        validate={(e) => {
-          const whatsapp_number = e
-          const whatsapp_number_regex = /^[0-9]{10,13}$/
-          if (!whatsapp_number.match(whatsapp_number_regex)) {
-            return 'Please enter a valid phone number (10-13 digits) and start with 8'
-          }
-        }}
-        onChange={(e) => setForm({ ...form, whatsapp_number: e })}
-        errorMessage={'Please enter a valid phone number'}
-      />
+      <div className="space-y-1">
+        <TextField
+          isRequired
+          label="Whatsapp Number"
+          prefix={'+62'}
+          placeholder="812*****"
+          value={form.whatsapp_number}
+          name="whatsapp_number"
+          validate={(e) => {
+            const whatsapp_number = e
+            const whatsapp_number_regex = /^[0-9]{10,13}$/
+            if (!whatsapp_number.match(whatsapp_number_regex)) {
+              return 'Please enter a valid phone number (10-13 digits) and start with 8'
+            }
+          }}
+          onChange={(e) => setForm({ ...form, whatsapp_number: e })}
+          errorMessage={'Please enter a valid phone number'}
+        />
+        {resAccount?.data?.status === 400 && (
+          <p className="text-sm text-danger forced-colors:text-[Mark]">
+            {resAccount?.data?.message}
+          </p>
+        )}
+      </div>
 
-      <Button type="submit" intent="light/dark">
-        Generate QR Code
+      {resQr?.data?.qrCodeFE && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-center">
+            <Image
+              alt="QR Code"
+              src={resQr?.data?.qrCodeFE}
+              width={200}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+          <Note>
+            <NoteTitle>Info</NoteTitle>
+            <NoteDescription>
+              Please scan the QR Code with your Whatsapp App to login to your
+              account , and please wait for 1 minute after scanning the QR Code
+            </NoteDescription>
+          </Note>
+        </div>
+      )}
+
+      <Button
+        isDisabled={isPending || pendingGenerateQR}
+        type="submit"
+        intent="light/dark"
+      >
+        {isPending || pendingGenerateQR ? 'Please Wait...' : 'Generate QR Code'}
       </Button>
     </Form>
   )

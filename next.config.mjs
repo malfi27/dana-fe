@@ -15,8 +15,7 @@ const nextConfig = {
   },
   env: {
     APP_URL: 'http://localhost:3000',
-    WHATSAPP_API_URL:
-      'https://lg-karaoke-village-murray.trycloudflare.com/api/v1'
+    WHATSAPP_API_URL: 'http://104.248.146.109/api/v1'
   }
 }
 
