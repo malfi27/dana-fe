@@ -1,11 +1,11 @@
 {
-  "name": "provision.irsyad.co",
+  "name": "dana.frontend",
   "version": "1.2.0",
   "private": true,
   "author": {
-    "name": "Irsyad A. Panjaitan",
-    "email": "irsyad@parsinta.com",
-    "url": "https://provision.irsyad.co"
+    "name": "Break No Limit",
+    "email": "breaknolimit@nolimit.com",
+    "url": "http://breaknolimit.com"
   },
   "scripts": {
     "dev": "next dev",

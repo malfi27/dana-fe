@@ -30,16 +30,16 @@ export function UserDropdownMenu() {
       <MenuTrigger className="rounded-full">
         <Avatar
           className="size-8"
-          src="https://github.com/irsyadadl.png"
-          initials="IRS"
+          src="https://github.com/malfi27.png"
+          initials="MAR"
         />
       </MenuTrigger>
       <MenuContent showArrow className="min-w-56" placement="bottom end">
         <MenuSection>
           <MenuHeader separator>
-            <div className="font-medium">Irsyad A. Panjaitan</div>
+            <div className="font-medium">Break Nolimit</div>
             <p className="text-sm font-normal text-muted-fg">
-              irsyad@parsinta.com
+              breaknolimit@gmail.com
             </p>
           </MenuHeader>
           <MenuItem href={'/account'}>

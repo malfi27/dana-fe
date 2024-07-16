@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'i.pravatar.cc'
       }
     ]
+  },
+  env: {
+    APP_URL: 'http://localhost:3000',
+    WHATSAPP_API_URL:
+      'https://lg-karaoke-village-murray.trycloudflare.com/api/v1'
   }
 }
 

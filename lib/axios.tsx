@@ -12,3 +12,7 @@ export const axiosApi = axios.create({
     Authorization: `Bearer ${authToken}` // Menyertakan token di header Authorization
   }
 })
+
+export const axiosWhatsappApi = axios.create({
+  baseURL: process.env.WHATSAPP_API_URL
+})
