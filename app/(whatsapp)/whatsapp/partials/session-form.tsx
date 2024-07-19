@@ -78,7 +78,7 @@ export function WhatsappSessionForm() {
       waitForApiResponse(
         mutateAsync(
           {
-            whatsapp_number: parseInt(whatsapp_number)
+            whatsapp_number: whatsapp_number
           },
           {
             onSuccess: (data) => {
@@ -87,20 +87,21 @@ export function WhatsappSessionForm() {
                   waitForApiResponse(
                     mutateGenerateQrCode(
                       {
-                        whatsapp_number: parseInt(whatsapp_number)
+                        session: whatsapp_number,
+                        requestType: 'connection'
                       },
                       {
                         onSuccess: () => {
-                          setCountdown(60)
+                          setCountdown(30)
                           setStoredNumber(whatsapp_number)
-                          Cookies.set('countdown-whatsapp-qr', '60', {
-                            expires: new Date(Date.now() + 60000)
+                          Cookies.set('countdown-whatsapp-qr', '30', {
+                            expires: new Date(Date.now() + 30000)
                           })
                           Cookies.set(
                             'countdown-whatsapp-number',
                             whatsapp_number,
                             {
-                              expires: new Date(Date.now() + 60000)
+                              expires: new Date(Date.now() + 30000)
                             }
                           )
                         }
@@ -122,20 +123,21 @@ export function WhatsappSessionForm() {
                   waitForApiResponse(
                     mutateGenerateQrCode(
                       {
-                        whatsapp_number: parseInt(whatsapp_number)
+                        session: whatsapp_number,
+                        requestType: 'connection'
                       },
                       {
                         onSuccess: () => {
-                          setCountdown(60)
+                          setCountdown(30)
                           setStoredNumber(whatsapp_number)
-                          Cookies.set('countdown-whatsapp-qr', '60', {
-                            expires: new Date(Date.now() + 60000)
+                          Cookies.set('countdown-whatsapp-qr', '30', {
+                            expires: new Date(Date.now() + 30000)
                           })
                           Cookies.set(
                             'countdown-whatsapp-number',
                             whatsapp_number,
                             {
-                              expires: new Date(Date.now() + 60000)
+                              expires: new Date(Date.now() + 30000)
                             }
                           )
                         }
@@ -163,9 +165,9 @@ export function WhatsappSessionForm() {
 
   return (
     <Form onSubmit={handleSubmit} className="space-y-4">
-      {resQr?.status === 200 && (
-        <Note intent="info">
-          <NoteTitle>Info Whatsapp Number</NoteTitle>
+      {resQr?.status === 200 && resQr?.data?.message && (
+        <Note intent={resQr?.data?.type === 'ready' ? 'success' : 'warning'}>
+          <NoteTitle>Info Status Whatsapp</NoteTitle>
           <NoteDescription>{resQr?.data?.message}</NoteDescription>
         </Note>
       )}
@@ -197,7 +199,7 @@ export function WhatsappSessionForm() {
         )}
       </div>
 
-      {resQr?.data?.qrCodeFE && (
+      {resQr?.data?.qrImage && (
         <div className="space-y-4">
           <div className="flex items-center justify-center">
             {
@@ -205,7 +207,7 @@ export function WhatsappSessionForm() {
               countdown !== null && countdown > 0 && (
                 <Image
                   alt="QR Code"
-                  src={resQr?.data?.qrCodeFE}
+                  src={resQr?.data?.qrImage}
                   width={200}
                   height={200}
                   className="object-contain"
@@ -226,7 +228,7 @@ export function WhatsappSessionForm() {
               <NoteDescription>
                 Please wait for {countdown} seconds before generating a new QR
                 Code for the same number, and if you already scanned the QR Code
-                please wait for 2 minutes after scanning.
+                please wait for 30 Seconds after scanning.
               </NoteDescription>
             </Note>
           )
