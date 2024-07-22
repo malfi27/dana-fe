@@ -1,11 +1,16 @@
-export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+'use client'
+
+import { Button } from '@/components/ui'
+import { IconBrandWhatsapp, IconCursorClick } from '@irsyadadl/paranoid'
+import { useRouter } from 'next/navigation'
+
+export function Landingpage() {
+  const Router = useRouter()
   return (
-    <main className="relative min-h-screen w-full overflow-hidden">
-      {children}
+    <div className="container relative min-h-screen w-full overflow-hidden">
+      <div className="absolute bottom-0 mx-auto -mb-36 inline-block bg-gradient-to-r from-fg/5 via-zinc-200 via-45% to-background bg-clip-text text-[20rem] font-bold tracking-tighter text-transparent dark:via-zinc-800">
+        Payment
+      </div>
       <svg
         aria-hidden="true"
         className="absolute inset-x-0 -top-20 -z-10 block h-[1000px] w-full fill-secondary/20 stroke-border/30 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] lg:fill-secondary lg:stroke-border/60"
@@ -56,9 +61,40 @@ export default function RootLayout({
           </pattern>
         </defs>
       </svg>
-      <div className="absolute bottom-0 right-0 mx-auto -mb-16 inline-block bg-gradient-to-r from-fg/5 via-zinc-200 via-45% to-background bg-clip-text text-[14rem] font-bold tracking-tighter text-transparent dark:via-zinc-800">
-        Payment
+      <div className="relative z-10 flex min-h-screen w-full flex-col justify-center pb-12">
+        <h1 className="mt-10 text-4xl font-extrabold tracking-tighter text-fg sm:mt-0 sm:text-5xl/[3.5rem] md:mt-10 md:text-6xl lg:mt-28 lg:text-7xl xl:mt-12">
+          Payment <br></br> Gateway
+        </h1>
+        <p className="mt-6 max-w-2xl text-2xl text-muted-fg">
+          Automate your business with our payment gateway solution that helps
+          you to receive payments from your customers.
+        </p>
+
+        <div className="flex gap-4">
+          <Button
+            intent="secondary"
+            appearance="outline"
+            shape="circle"
+            className="mt-4 w-fit"
+            size="large"
+            onPress={() => Router.push('/login')}
+          >
+            <IconCursorClick />
+            Try it now
+          </Button>
+          <Button
+            intent="secondary"
+            appearance="outline"
+            shape="circle"
+            className="mt-4 w-fit"
+            size="large"
+            onPress={() => Router.push('/login')}
+          >
+            <IconBrandWhatsapp />
+            Whatsapp QR
+          </Button>
+        </div>
       </div>
-    </main>
+    </div>
   )
 }

@@ -2,6 +2,6 @@
 import { redirect } from 'next/navigation'
 
 export default function Home() {
-  redirect('/whatsapp/session')
+  redirect('/home-page')
   return null
 }

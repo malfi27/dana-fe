@@ -1,35 +1,22 @@
 'use client'
 
-import logsJson from '@/data/logs.json'
-
-import Link, { LinkProps } from 'next/link'
-import * as React from 'react'
-import { FC, SVGProps, useEffect, useState } from 'react'
+import { Logo } from '@/components/logo'
 import {
-  IconChart,
-  IconDashboard,
   IconDatabase,
   IconDeviceDesktop,
-  IconGear,
-  IconGlobe,
-  IconKey,
+  IconHome,
   IconMoon,
-  IconNotes,
   IconSearch,
   IconStorage,
   IconSun,
   IconSwitchHorizontal,
-  IconToolbox,
-  IconWindow
+  IconToolbox
 } from '@irsyadadl/paranoid'
-import { cn } from 'ui/primitive'
+import { useTheme } from 'next-themes'
+import Link, { LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { dataDatabases } from '@/app/(in)/database/partials/list-databases'
-import { dataSites } from '@/app/(in)/sites/partials/list-sites'
-import { dataKeys } from '@/app/(in)/ssh-keys/partials/list-keys'
-import { Logo } from '@/components/logo'
-import { serverDetails } from '@/app/(in)/servers/partials/list-servers'
-import { AccordionMenu, AccordionMenuItem } from 'ui/accordion-menu'
+import * as React from 'react'
+import { FC, SVGProps, useEffect, useState } from 'react'
 import {
   Badge,
   ButtonPrimitive,
@@ -41,54 +28,32 @@ import {
   CommandModal,
   CommandSection
 } from 'ui'
-import { useTheme } from 'next-themes'
+import { AccordionMenu, AccordionMenuItem } from 'ui/accordion-menu'
+import { cn } from 'ui/primitive'
 
 export const navigations = [
-  { label: 'Dashboard', href: '/dashboard', icon: IconDashboard, badge: false },
+  { label: 'Dashboard', href: '/dashboard', icon: IconHome, badge: false },
   {
-    label: 'Server',
-    href: '/servers',
+    label: 'Hardware',
+    href: '/hardware',
     icon: IconStorage,
-    badge: serverDetails.length
+    badge: false
   },
-  { label: 'Sites', href: '/sites', icon: IconGlobe, badge: dataSites.length },
   {
     label: 'Database',
     href: '/database',
     icon: IconDatabase,
-    badge: dataDatabases.length
+    badge: false
   },
-  {
-    label: 'SSH Keys',
-    href: '/ssh-keys',
-    icon: IconKey,
-    badge: dataKeys.length
-  },
-  { label: 'Monitoring', href: '/monitoring', icon: IconChart, badge: false },
-  { label: 'Logs', href: '/logs', icon: IconNotes, badge: logsJson.length },
-  { label: 'Settings', href: '/settings', icon: IconGear, badge: false },
+
   {
     id: 'tools',
     label: 'Tools',
     icon: IconToolbox,
     isExpanded: true,
     children: [
-      { label: 'PHP', href: '/php', badge: false },
-      { label: 'Nginx Templates', href: '/nginx-templates', badge: false },
-      { label: 'Scheduler', href: '/scheduler', badge: false },
-      { label: 'Daemon', href: '/daemon', badge: false }
-    ]
-  },
-  {
-    id: 'auth',
-    label: 'Authentication',
-    icon: IconWindow,
-    isExpanded: false,
-    children: [
-      { label: 'Login', href: '/login', badge: false },
-      { label: 'Register', href: '/register', badge: false },
-      { label: 'Forgot Password', href: '/forgot-password', badge: false },
-      { label: 'Reset Password', href: '/reset-password', badge: false }
+      { label: 'History', href: '/tools/history', badge: false },
+      { label: 'Dana Automation', href: '/tools/facebook', badge: false }
     ]
   }
 ]
@@ -192,7 +157,7 @@ export function AsideContent() {
         >
           <Logo className="mr-2 size-5 shrink-0 text-fg" />
           <span className="font-mono text-sm font-semibold tracking-tighter">
-            Provision
+            Payment Control
           </span>
         </Link>
         <CommandTrigger onPress={() => setCommandOpen(!commandOpen)} />

@@ -14,8 +14,8 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Provision',
-  description: 'Provision your servers with ease.'
+  title: 'Payment Gateway',
+  description: 'Payment Gateway for automate your business'
 }
 
 export default function RootLayout({

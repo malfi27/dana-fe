@@ -16,7 +16,8 @@ const nextConfig = {
   env: {
     APP_URL: 'http://localhost:3000',
     WHATSAPP_API_URL:
-      'https://pty-greatest-size-functioning.trycloudflare.com/api/v1'
+      'https://pty-greatest-size-functioning.trycloudflare.com/api/v1',
+    API_URL: 'http://localhost:4000/api'
   }
 }
 

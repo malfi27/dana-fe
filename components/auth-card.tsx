@@ -2,10 +2,8 @@
 
 export function AuthCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="-mx-4 sm:mx-0">
-      <div className="border-y bg-tertiary p-6 sm:rounded-lg sm:border-x sm:p-10 sm:shadow">
-        {children}
-      </div>
+    <div className="relative z-20 flex h-full min-h-screen w-full border-r border-border bg-background px-10 py-12 lg:max-w-lg lg:items-center">
+      <div className="w-full">{children}</div>
     </div>
   )
 }
