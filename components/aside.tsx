@@ -53,7 +53,7 @@ export const navigations = [
     isExpanded: true,
     children: [
       { label: 'History', href: '/tools/history', badge: false },
-      { label: 'Dana Automation', href: '/tools/facebook', badge: false }
+      { label: 'Automation', href: '/tools/facebook', badge: false }
     ]
   }
 ]
@@ -157,7 +157,7 @@ export function AsideContent() {
         >
           <Logo className="mr-2 size-5 shrink-0 text-fg" />
           <span className="font-mono text-sm font-semibold tracking-tighter">
-            Payment Control
+            PG Dana
           </span>
         </Link>
         <CommandTrigger onPress={() => setCommandOpen(!commandOpen)} />

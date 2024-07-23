@@ -9,7 +9,7 @@ export function Landingpage() {
   return (
     <div className="container relative min-h-screen w-full overflow-hidden">
       <div className="absolute bottom-0 mx-auto -mb-36 inline-block bg-gradient-to-r from-fg/5 via-zinc-200 via-45% to-background bg-clip-text text-[20rem] font-bold tracking-tighter text-transparent dark:via-zinc-800">
-        Payment
+        PG Dana
       </div>
       <svg
         aria-hidden="true"
@@ -63,7 +63,7 @@ export function Landingpage() {
       </svg>
       <div className="relative z-10 flex min-h-screen w-full flex-col justify-center pb-12">
         <h1 className="mt-10 text-4xl font-extrabold tracking-tighter text-fg sm:mt-0 sm:text-5xl/[3.5rem] md:mt-10 md:text-6xl lg:mt-28 lg:text-7xl xl:mt-12">
-          Payment <br></br> Gateway
+          PG <br></br> Dana
         </h1>
         <p className="mt-6 max-w-2xl text-2xl text-muted-fg">
           Automate your business with our payment gateway solution that helps
