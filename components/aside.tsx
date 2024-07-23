@@ -53,7 +53,7 @@ export const navigations = [
     isExpanded: true,
     children: [
       { label: 'History', href: '/tools/history', badge: false },
-      { label: 'Automation', href: '/tools/facebook', badge: false }
+      { label: 'Automation', href: '/tools/automation', badge: false }
     ]
   }
 ]

@@ -210,7 +210,9 @@ export const HistoryGateway = () => {
                                   ? 'danger'
                                   : item?.status === 'Success'
                                     ? 'success'
-                                    : 'secondary'
+                                    : item?.status === 'On Progress'
+                                      ? 'warning'
+                                      : 'secondary'
                               }
                             >
                               <IconBulletFill />
