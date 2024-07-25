@@ -17,7 +17,9 @@ export const AutomationPage = () => {
               <p className="text-sm text-muted-fg">Methode : POST</p>
               <p className="text-sm text-muted-fg">Endpoint : /api/gateway</p>
             </div>
-            <Contenteditable>{ActionWithdrawBody}</Contenteditable>
+            <Contenteditable className="bg-background px-4 py-2">
+              {ActionWithdrawBody}
+            </Contenteditable>
           </div>
           <div className="space-y-4">
             <div className="space-y-1">
@@ -25,7 +27,9 @@ export const AutomationPage = () => {
               <p className="text-sm text-muted-fg">Methode : POST</p>
               <p className="text-sm text-muted-fg">Endpoint : /api/gateway</p>
             </div>
-            <Contenteditable>{ActionDepositBody}</Contenteditable>
+            <Contenteditable className="bg-background px-4 py-2">
+              {ActionDepositBody}
+            </Contenteditable>
           </div>
         </CardContent>
       </Card>
