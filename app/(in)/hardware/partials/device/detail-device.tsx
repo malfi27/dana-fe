@@ -9,9 +9,18 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  Label,
   Menu,
   MenuContent,
   MenuItem,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalTitle,
   SearchField,
   SectionTitle,
   Select,
@@ -23,7 +32,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui'
-import { wait } from '@/lib/utils'
+import { wait, waitForApiResponse } from '@/lib/utils'
 import {
   IconArrowLeft,
   IconBulletFill,
@@ -34,12 +43,15 @@ import {
   IconDevicePhoneFill,
   IconDotsVertical,
   IconDuplicate,
+  IconOpenLink,
   IconTrash
 } from '@irsyadadl/paranoid'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { CreateAccount } from './create-account'
+import { Contenteditable } from '@/components/contenteditable'
+import { useUpdateAccount } from '@/app/api/account/put-update-account'
 
 export function DetailDevice() {
   const Routes = useRouter()
@@ -49,6 +61,9 @@ export function DetailDevice() {
   const rackId = searchParams.get('rackId')
   const deviceId = searchParams.get('deviceId')
 
+  const [open, setOpen] = useState<boolean>(false)
+  const [objData, setObjData] = useState<DetailAccountProps>({})
+
   const [pagination, setPagination] = useState({
     page: 1,
     limit: 10
@@ -57,13 +72,15 @@ export function DetailDevice() {
   const [balanceRange, setBalanceRange] = useState('')
 
   //Data fetching
-  const { data, isLoading } = useGetAccounts({
+  const { data, isLoading, refetch } = useGetAccounts({
     page: pagination.page,
     limit: pagination.limit,
     deviceId: deviceId ? deviceId : '',
     search: search,
     balanceRange: balanceRange
   })
+
+  const { mutateAsync } = useUpdateAccount()
 
   return (
     <div className="space-y-6">
@@ -269,6 +286,16 @@ export function DetailDevice() {
                                 <IconDuplicate />
                                 Copy Phone Number
                               </MenuItem>
+                              <MenuItem
+                                onAction={() => {
+                                  // Edit
+                                  setOpen(true)
+                                  setObjData(item)
+                                }}
+                              >
+                                <IconOpenLink />
+                                Detail
+                              </MenuItem>
                               <MenuItem onAction={() => {}} isDanger>
                                 <IconTrash />
                                 Delete
@@ -342,6 +369,232 @@ export function DetailDevice() {
           </div>
         </div>
       </Card>
+
+      <ModalOverlay isDismissable={false} isOpen={open} onOpenChange={setOpen}>
+        <ModalContent>
+          <ModalHeader>
+            <ModalTitle>Detail Account</ModalTitle>
+            <ModalDescription>
+              Detail account for every account that is already registered based
+              on their platform
+            </ModalDescription>
+          </ModalHeader>
+          <ModalBody className="space-y-4">
+            <div className="space-y-4">
+              <div className="space-y-1">
+                <Label>Name</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            name: e
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.name : ''}
+                </Contenteditable>
+              </div>
+              <div className="space-y-1">
+                <Label>Phone Number</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            phone_number: e
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.phone_number : ''}
+                </Contenteditable>
+              </div>
+              <div className="space-y-1">
+                <Label>PIN</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            pin: parseInt(e.toString())
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.pin : ''}
+                </Contenteditable>
+              </div>
+              <div className="space-y-1">
+                <Label>Balance</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            balance: parseInt(e.toString())
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.balance : ''}
+                </Contenteditable>
+              </div>
+              <div className="space-y-1">
+                <Label>NIK</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            nik: e
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.nik : ''}
+                </Contenteditable>
+              </div>
+              <div className="space-y-1">
+                <Label>Email</Label>
+                <Contenteditable
+                  className="bg-background px-4 py-2"
+                  onBlur={(e) => {
+                    wait(500).then(() => {
+                      toast.promise(
+                        waitForApiResponse(
+                          mutateAsync({
+                            id: objData?._id,
+                            email: e
+                          })
+                        ),
+                        {
+                          loading: 'Update Process...',
+                          success: (data) => {
+                            if (data?.status === 200) {
+                              refetch()
+                            }
+                            const successMessage = `Data Update successfully`
+                            return successMessage
+                          },
+                          error:
+                            'Failed to update data. Please try again later.'
+                        }
+                      )
+                    })
+                  }}
+                >
+                  {objData ? objData.email : ''}
+                </Contenteditable>
+              </div>
+            </div>
+          </ModalBody>
+          <ModalFooter className="pt-4">
+            <ModalClose>Close</ModalClose>
+          </ModalFooter>
+        </ModalContent>
+      </ModalOverlay>
     </div>
   )
+}
+
+interface DetailAccountProps {
+  _id?: string
+  phone_number?: string
+  balance?: number
+  name?: string
+  nik?: string
+  email?: string
+  pin?: number
+  qr_code?: string
+  history?: Array<any>
+  device?: object
+  createdAt?: string
+  updatedAt?: string
 }
