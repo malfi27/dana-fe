@@ -52,6 +52,7 @@ import { toast } from 'sonner'
 import { CreateAccount } from './create-account'
 import { Contenteditable } from '@/components/contenteditable'
 import { useUpdateAccount } from '@/app/api/account/put-update-account'
+import Image from 'next/image'
 
 export function DetailDevice() {
   const Routes = useRouter()
@@ -379,7 +380,7 @@ export function DetailDevice() {
               on their platform
             </ModalDescription>
           </ModalHeader>
-          <ModalBody className="space-y-4">
+          <ModalBody className="max-h-[500px] space-y-4 overflow-y-auto">
             <div className="space-y-4">
               <div className="space-y-1">
                 <Label>Name</Label>
@@ -573,6 +574,18 @@ export function DetailDevice() {
                   {objData ? objData.email : ''}
                 </Contenteditable>
               </div>
+              {objData?.qr_code && (
+                <div className="space-y-1">
+                  <Label>QR Code</Label>
+                  <Image
+                    alt="QR Code"
+                    src={objData.qr_code}
+                    width={200}
+                    height={200}
+                    className="object-contain"
+                  />
+                </div>
+              )}
             </div>
           </ModalBody>
           <ModalFooter className="pt-4">
