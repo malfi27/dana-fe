@@ -1,6 +1,4 @@
-'use client'
-
-import { useGetListGateway } from '@/app/api/gateway/get-gateway'
+import { useGetListPaymentTransaction } from '@/app/api/payment/get-payment'
 import {
   Badge,
   Button,
@@ -25,124 +23,56 @@ import {
 import { wait } from '@/lib/utils'
 import {
   IconBulletFill,
-  IconCalendarClockFill,
   IconChevronLgLeft,
   IconChevronLgRight,
   IconChevronsLgLeft,
   IconChevronsLgRight,
   IconDotsVertical,
   IconDuplicate,
-  IconThumbsDownFill,
-  IconTrash,
-  IconTruckFill,
-  IconYesFill
+  IconTrash
 } from '@irsyadadl/paranoid'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-export const HistoryGateway = () => {
-  const [state, setState] = useState({
+export const TransactionTable = () => {
+  const [state, setState] = useState<any>({
     page: 1,
     limit: 10,
     search: '',
-    startDate: '',
-    endDate: ''
+    period: 'all'
   })
-  const { data, isLoading } = useGetListGateway(state)
+  const { data, isLoading } = useGetListPaymentTransaction(state)
   return (
     <>
       <Card>
-        <CardHeader className="border-b border-border">
-          <CardTitle>Statistic History</CardTitle>
+        <CardHeader>
+          <CardTitle>Transaction History</CardTitle>
           <CardDescription>
-            View the history of your statistics. You can see the changes of your
-            statistics over time.
+            This is the list of transaction history that has been made by the
+            user payment request
           </CardDescription>
         </CardHeader>
-        <CardContent className="pt-6">
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 xl:grid-cols-5">
-            <div className="flex flex-col gap-2 rounded-lg border border-border p-2 md:flex-row md:items-center md:gap-0">
-              <div className="mr-3 grid size-8 place-content-center rounded-md border bg-secondary md:size-12">
-                <IconYesFill className="size-4 shrink-0 text-success md:size-8" />
-              </div>
-              <div>
-                <p className="text-sm font-bold md:text-2xl">
-                  {data?.data?.statusStats?.Success
-                    ? data?.data?.statusStats?.Success
-                    : '0'}
-                </p>
-                <p className="text-xs text-muted-fg md:text-sm">Task Succes</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 rounded-lg border border-border p-2 md:flex-row md:items-center md:gap-0">
-              <div className="mr-3 grid size-8 place-content-center rounded-md border bg-secondary md:size-12">
-                <IconThumbsDownFill className="size-4 shrink-0 text-danger md:size-8" />
-              </div>
-              <div>
-                <p className="text-sm font-bold md:text-2xl">
-                  {' '}
-                  {data?.data?.statusStats?.Failed
-                    ? data?.data?.statusStats?.Failed
-                    : '0'}
-                </p>
-                <p className="text-xs text-muted-fg md:text-sm">Task Failed</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 rounded-lg border border-border p-2 md:flex-row md:items-center md:gap-0">
-              <div className="mr-3 grid size-8 place-content-center rounded-md border bg-secondary md:size-12">
-                <IconCalendarClockFill className="size-4 shrink-0 text-muted-fg md:size-8" />
-              </div>
-              <div>
-                <p className="text-sm font-bold md:text-2xl">
-                  {data?.data?.statusStats?.['On Progress']
-                    ? data?.data?.statusStats?.['On Progress']
-                    : '0'}
-                </p>
-                <p className="text-xs text-muted-fg md:text-sm">
-                  Task On Progress
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 rounded-lg border border-border p-2 md:flex-row md:items-center md:gap-0">
-              <div className="mr-3 grid size-8 place-content-center rounded-md border bg-secondary md:size-12">
-                <IconTruckFill className="size-4 shrink-0 text-secondary-fg md:size-8" />
-              </div>
-              <div>
-                <p className="text-sm font-bold md:text-2xl">
-                  {data?.data?.statusStats?.Pending
-                    ? data?.data?.statusStats?.Pending
-                    : '0'}
-                </p>
-                <p className="text-xs text-muted-fg md:text-sm">
-                  Task On Pending
-                </p>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card>
         <CardContent>
-          <div className="space-y-4 px-6 pb-6 pt-6">
+          <div className="space-y-4 p-4">
             {/* Filter */}
             <div className="flex items-end justify-between gap-x-2">
               <div className="hidden gap-2 lg:flex">
-                {/* <Select
-                  label={'Balance Range'}
+                <Select
+                  label={'Period Time'}
                   className={`w-40`}
                   name="user"
                   onSelectionChange={(e) => {
-                    setBalanceRange(e?.toString())
+                    setState({ ...state, period: e.toString() })
                   }}
-                  defaultSelectedKey={balanceRange}
-                  placeholder={balanceRange || 'All'}
+                  defaultSelectedKey={state?.period}
+                  placeholder={state?.period || 'All'}
                 >
-                  <SelectItem id="">All</SelectItem>
-                  <SelectItem id="lt100000">{`< Rp 100.000`}</SelectItem>
-                  <SelectItem id="gt100000">{`> Rp 100.000`}</SelectItem>
-                  <SelectItem id="gt500000">{`> Rp 500.000`}</SelectItem>
-                  <SelectItem id="gt1000000">{`> Rp 1.000.000`}</SelectItem>
-                </Select> */}
+                  <SelectItem id="all">All</SelectItem>
+                  <SelectItem id="day">{`This Day`}</SelectItem>
+                  <SelectItem id="week">{`Week`}</SelectItem>
+                  <SelectItem id="month">{`Month`}</SelectItem>
+                  <SelectItem id="year">{`Year`}</SelectItem>
+                </Select>
               </div>
               <SearchField
                 aria-label="Search sites"
@@ -158,22 +88,23 @@ export const HistoryGateway = () => {
             {/* Table */}
             <div className="overflow-hidden rounded-md border bg-background">
               <Table
-                aria-label="account"
+                aria-label="transaction"
                 selectionMode="none"
-                aria-describedby="account"
-                aria-labelledby="account"
+                aria-describedby="transaction"
+                aria-labelledby="transaction"
               >
                 <TableHeader>
                   <TableColumn className={`text-nowrap`}>#ID</TableColumn>
-                  <TableColumn className={`text-nowrap`}>Action</TableColumn>
-                  <TableColumn className={`text-nowrap`}>Status</TableColumn>
-                  <TableColumn className={`text-nowrap`}>Message</TableColumn>
-                  <TableColumn className={`text-nowrap`}>Account</TableColumn>
                   <TableColumn className={`text-nowrap`}>
-                    Client Number
+                    Invoice Number
+                  </TableColumn>
+                  <TableColumn className={`text-nowrap`}>Type</TableColumn>
+                  <TableColumn className={`text-nowrap`}>Amount</TableColumn>
+                  <TableColumn className={`text-nowrap`}>
+                    Payment Status
                   </TableColumn>
                   <TableColumn className={`text-nowrap`}>
-                    Account Register
+                    Automation Status
                   </TableColumn>
 
                   <TableColumn className={`text-nowrap`}></TableColumn>
@@ -196,43 +127,56 @@ export const HistoryGateway = () => {
                             {item?.id ? item?.id : '-'}
                           </TableCell>
                           <TableCell>
-                            {item?.action ? item?.action : '-'}
+                            {item?.invoice_number ? item?.invoice_number : '-'}
+                          </TableCell>
+                          <TableCell>{item?.type ? item?.type : '-'}</TableCell>
+                          <TableCell>
+                            {item?.amount
+                              ? //Rupiah
+                                new Intl.NumberFormat('id-ID', {
+                                  style: 'currency',
+                                  currency: 'IDR',
+                                  maximumFractionDigits: 0
+                                }).format(item?.amount)
+                              : '-'}
                           </TableCell>
                           <TableCell>
                             <Badge
+                              shape="circle"
                               className={`capitalize [&_svg]:size-3`}
                               intent={
-                                item?.status === 'Failed'
+                                item?.status === 'UNPAID'
                                   ? 'danger'
-                                  : item?.status === 'Success'
+                                  : item?.status === 'PAID'
                                     ? 'success'
-                                    : item?.status === 'On Progress'
-                                      ? 'warning'
-                                      : 'secondary'
+                                    : 'secondary'
                               }
                             >
-                              <IconBulletFill />
                               {item.status ? item?.status : '-'}
                             </Badge>
                           </TableCell>
                           <TableCell>
-                            {item?.result_message
-                              ? item?.result_message.includes('element')
-                                ? 'Contact developer for more information about this error'
-                                : item?.result_message
-                              : '-'}
+                            {item?.automation_status ? (
+                              <Badge
+                                shape="circle"
+                                className={`capitalize [&_svg]:size-3`}
+                                intent={
+                                  item?.automation_status === 'Failed'
+                                    ? 'danger'
+                                    : item?.automation_status === 'Success'
+                                      ? 'success'
+                                      : 'secondary'
+                                }
+                              >
+                                {item.automation_status
+                                  ? item?.automation_status
+                                  : '-'}
+                              </Badge>
+                            ) : (
+                              '-'
+                            )}
                           </TableCell>
-                          <TableCell>
-                            {item?.account ? item?.account?.phone_number : '-'}
-                          </TableCell>
-                          <TableCell>
-                            {item?.account_number ? item?.account_number : '-'}
-                          </TableCell>
-                          <TableCell>
-                            {item?.register_account
-                              ? item?.register_account
-                              : '-'}
-                          </TableCell>
+
                           <TableCell className="flex justify-end">
                             <Menu>
                               <Button

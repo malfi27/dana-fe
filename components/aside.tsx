@@ -10,7 +10,8 @@ import {
   IconStorage,
   IconSun,
   IconSwitchHorizontal,
-  IconToolbox
+  IconToolbox,
+  IconWallet
 } from '@irsyadadl/paranoid'
 import { useTheme } from 'next-themes'
 import Link, { LinkProps } from 'next/link'
@@ -40,9 +41,9 @@ export const navigations = [
     badge: false
   },
   {
-    label: 'Database',
-    href: '/database',
-    icon: IconDatabase,
+    label: 'Transaction',
+    href: '/transaction',
+    icon: IconWallet,
     badge: false
   },
 
