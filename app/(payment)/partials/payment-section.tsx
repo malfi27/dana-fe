@@ -1,7 +1,7 @@
 'use client'
 
 import { useConfirmPayment } from '@/app/api/payment/confirm-payment'
-import { useCreatePayment } from '@/app/api/payment/create-payment'
+import { useGetPGDetail } from '@/app/api/payment/get-pg-detail'
 import {
   Button,
   CardDescription,
@@ -14,48 +14,18 @@ import { waitForApiResponse } from '@/lib/utils'
 import { IconGalleryFill, IconWallet } from '@irsyadadl/paranoid'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 export const PaymentSection = () => {
   const query = useSearchParams()
-  const amount = query.get('amount')
-  const invoice_number = query.get('invoice_number')
+  const merchantId = query.get('merchantId')
+  const merchantReferenceNum = query.get('merchantReferenceNum')
 
-  const [qr, setQr] = useState<string | null>(null)
-  //state object to store the qr code
-  const [paymentData, setPaymentData] = useState<object | any>(null)
-
-  const { mutateAsync } = useCreatePayment()
+  const { data, isLoading } = useGetPGDetail({
+    merchantId: merchantId ? merchantId : '',
+    merchantReferenceNum: merchantReferenceNum ? merchantReferenceNum : ''
+  })
   const { mutateAsync: confirmPaymet, isPending } = useConfirmPayment()
-
-  useEffect(() => {
-    if (amount && invoice_number) {
-      toast.promise(
-        waitForApiResponse(
-          mutateAsync(
-            {
-              amount: parseInt(amount),
-              invoice_number
-            },
-            {
-              onSuccess: (data) => {
-                if (data?.status === 200) {
-                  setPaymentData(data?.data?.data)
-                  setQr(data?.data?.qr_code)
-                }
-              }
-            }
-          )
-        ),
-        {
-          loading: 'Generating QR',
-          success: 'Ready to scan',
-          error: 'Failed to get QR'
-        }
-      )
-    }
-  }, [])
 
   return (
     <>
@@ -75,13 +45,13 @@ export const PaymentSection = () => {
               <div>
                 <label>Total Bill</label>
                 <div>
-                  {paymentData?.amount
+                  {data?.data?.amount
                     ? //Format idr
                       new Intl.NumberFormat('id-ID', {
                         style: 'currency',
                         currency: 'IDR',
                         maximumFractionDigits: 0
-                      }).format(paymentData?.amount)
+                      }).format(data?.data?.amount)
                     : '-'}
                 </div>
               </div>
@@ -96,8 +66,15 @@ export const PaymentSection = () => {
               </NoteDescription>
             </Note>
             <div className="flex items-center justify-center">
-              {qr && <Image src={qr} alt="QR" width={300} height={300} />}
-              {!qr && (
+              {data?.data?.qrCode && (
+                <Image
+                  src={data?.data?.qrCode}
+                  alt="QR"
+                  width={300}
+                  height={300}
+                />
+              )}
+              {!data?.data?.qrCode && (
                 <div className="flex flex-col items-center py-8">
                   <IconGalleryFill className="size-32 text-muted-fg" />
                   <p className="text-sm text-muted-fg">
@@ -113,7 +90,7 @@ export const PaymentSection = () => {
                 toast.promise(
                   waitForApiResponse(
                     confirmPaymet({
-                      id: paymentData?._id
+                      id: data?.data?._id
                     })
                   ),
                   {
@@ -123,7 +100,7 @@ export const PaymentSection = () => {
                   }
                 )
               }}
-              isDisabled={!qr || isPending}
+              isDisabled={!data?.data?.qrCode || isLoading || isPending}
               intent="light/dark"
               className="w-full"
             >
