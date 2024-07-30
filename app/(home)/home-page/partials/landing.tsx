@@ -88,7 +88,7 @@ export function Landingpage() {
             shape="circle"
             className="mt-4 w-fit"
             size="large"
-            onPress={() => Router.push('/login')}
+            onPress={() => Router.push('/whatsapp/session')}
           >
             <IconBrandWhatsapp />
             Whatsapp QR
