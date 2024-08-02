@@ -18,6 +18,7 @@ const apiFetch = (key: any) => {
 
 export const useGetListBox = (rackId: string) =>
   useQuery({
+    enabled: !!rackId,
     queryKey: ['List Boxs', rackId],
     queryFn: apiFetch,
     refetchOnWindowFocus: false,

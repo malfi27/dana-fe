@@ -18,6 +18,7 @@ const apiFetch = (key: any) => {
 
 export const useGetListDevice = (boxId: string) =>
   useQuery({
+    enabled: !!boxId,
     queryKey: ['List Devices', boxId],
     queryFn: apiFetch,
     refetchOnWindowFocus: false,

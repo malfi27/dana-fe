@@ -2,8 +2,8 @@
 
 import { Logo } from '@/components/logo'
 import {
-  IconDatabase,
   IconDeviceDesktop,
+  IconFolderBox,
   IconHome,
   IconMoon,
   IconSearch,
@@ -46,7 +46,12 @@ export const navigations = [
     icon: IconWallet,
     badge: false
   },
-
+  {
+    label: 'Group',
+    href: '/group',
+    icon: IconFolderBox,
+    badge: false
+  },
   {
     id: 'tools',
     label: 'Tools',
