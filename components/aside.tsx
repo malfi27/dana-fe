@@ -65,7 +65,7 @@ export const navigations = [
     icon: IconToolbox,
     isExpanded: true,
     children: [
-      { label: 'History', href: '/tools/history', badge: false },
+      { label: 'History Automation', href: '/tools/history', badge: false },
       { label: 'Automation', href: '/tools/automation', badge: false }
     ]
   }
