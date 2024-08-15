@@ -181,9 +181,10 @@ export function WhatsappSessionForm() {
           name="whatsapp_number"
           validate={(e) => {
             const whatsapp_number = e
-            const whatsapp_number_regex = /^[0-9]{10,13}$/
+            const whatsapp_number_regex = /^8[1-9][0-9]{8,11}$/
+
             if (!whatsapp_number.match(whatsapp_number_regex)) {
-              return 'Please enter a valid phone number (10-13 digits) and start with 8'
+              return 'Please enter a valid phone number (10-13 digits) starting with 8 and not starting with 0'
             }
           }}
           onChange={(e) => setForm({ ...form, whatsapp_number: e })}
