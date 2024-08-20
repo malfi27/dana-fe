@@ -30,14 +30,14 @@ export function UserDropdownMenu() {
       <MenuTrigger className="rounded-full">
         <Avatar
           className="size-8"
-          src="https://github.com/malfi27.png"
-          initials="MAR"
+          // src="https://github.com/malfi27.png"
+          initials="PG"
         />
       </MenuTrigger>
       <MenuContent showArrow className="min-w-56" placement="bottom end">
         <MenuSection>
           <MenuHeader separator>
-            <div className="font-medium">Break Nolimit</div>
+            <div className="font-medium">PG Dana</div>
             <p className="text-sm font-normal text-muted-fg">
               breaknolimit@gmail.com
             </p>

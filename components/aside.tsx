@@ -42,7 +42,7 @@ export const navigations = [
     badge: false
   },
   {
-    label: 'Transaction',
+    label: 'PG Transaction',
     href: '/transaction',
     icon: IconWallet,
     badge: false

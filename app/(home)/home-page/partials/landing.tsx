@@ -82,7 +82,7 @@ export function Landingpage() {
             <IconCursorClick />
             Try it now
           </Button>
-          <Button
+          {/* <Button
             intent="secondary"
             appearance="outline"
             shape="circle"
@@ -92,7 +92,7 @@ export function Landingpage() {
           >
             <IconBrandWhatsapp />
             Whatsapp QR
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

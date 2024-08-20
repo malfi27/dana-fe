@@ -106,6 +106,9 @@ export const TransactionTable = () => {
                   <TableColumn className={`text-nowrap`}>
                     Automation Status
                   </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
+                    Automation ID
+                  </TableColumn>
 
                   <TableColumn className={`text-nowrap`}></TableColumn>
                 </TableHeader>
@@ -175,6 +178,9 @@ export const TransactionTable = () => {
                             ) : (
                               '-'
                             )}
+                          </TableCell>
+                          <TableCell>
+                            {item?.automation_id ? item?.automation_id : '-'}
                           </TableCell>
 
                           <TableCell className="flex justify-end">
