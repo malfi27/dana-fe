@@ -1,4 +1,6 @@
+import { useCSUpdateAmount } from '@/app/api/payment/cs-update-amount'
 import { useGetListPaymentTransaction } from '@/app/api/payment/get-payment'
+import { Contenteditable } from '@/components/contenteditable'
 import {
   Badge,
   Button,
@@ -7,9 +9,19 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  Form,
   Menu,
   MenuContent,
   MenuItem,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalTitle,
+  NumberField,
   SearchField,
   Select,
   SelectItem,
@@ -20,7 +32,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui'
-import { wait } from '@/lib/utils'
+import { wait, waitForApiResponse } from '@/lib/utils'
 import {
   IconBulletFill,
   IconChevronLgLeft,
@@ -29,19 +41,24 @@ import {
   IconChevronsLgRight,
   IconDotsVertical,
   IconDuplicate,
+  IconMoneybag,
   IconTrash
 } from '@irsyadadl/paranoid'
 import { useState } from 'react'
+import { Label } from 'react-aria-components'
 import { toast } from 'sonner'
 
 export const TransactionTable = () => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [objData, setObjData] = useState<any>({})
   const [state, setState] = useState<any>({
     page: 1,
     limit: 10,
     search: '',
     period: 'all'
   })
-  const { data, isLoading } = useGetListPaymentTransaction(state)
+  const { data, isLoading, refetch } = useGetListPaymentTransaction(state)
+  const { mutateAsync } = useCSUpdateAmount()
   return (
     <>
       <Card>
@@ -202,6 +219,19 @@ export const TransactionTable = () => {
                                   <IconDuplicate />
                                   Copy ID
                                 </MenuItem>
+                                {item?.automation_status === 'Failed' ? (
+                                  <MenuItem
+                                    onAction={() => {
+                                      setObjData(item)
+                                      setOpen(true)
+                                    }}
+                                  >
+                                    <IconMoneybag />
+                                    Update Transaction
+                                  </MenuItem>
+                                ) : (
+                                  ''
+                                )}
                                 <MenuItem onAction={() => {}} isDanger>
                                   <IconTrash />
                                   Delete
@@ -276,6 +306,74 @@ export const TransactionTable = () => {
           </div>
         </CardContent>
       </Card>
+
+      <ModalOverlay isDismissable={false} isOpen={open} onOpenChange={setOpen}>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault()
+            toast.promise(
+              waitForApiResponse(
+                mutateAsync(
+                  {
+                    invoice_number: objData?.invoice_number,
+                    amount: objData?.amount
+                  },
+                  {
+                    onSuccess: (data) => {
+                      if (data?.status === 200) {
+                        refetch()
+                        setOpen(false)
+                      }
+                    }
+                  }
+                )
+              )
+            ),
+              {
+                loading: 'Updating Transaction...',
+                success: 'Transaction Updated',
+                error: 'Failed to update transaction'
+              }
+          }}
+        >
+          <ModalContent size="2xl">
+            <ModalHeader>
+              <ModalTitle>
+                Update Transaction For Invoice #
+                {objData?.invoice_number ? objData?.invoice_number : ''}
+              </ModalTitle>
+              <ModalDescription>
+                This will update the amount of the transaction. and reruning the
+                automation process. Please make sure the amount is correct. If
+                the amount is not correct, the automation process will fail
+                again.
+              </ModalDescription>
+            </ModalHeader>
+            <ModalBody>
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <Label>Amount</Label>
+                  <NumberField
+                    aria-label="Name"
+                    className="w-full"
+                    onChange={(e) => {
+                      setObjData({ ...objData, amount: e })
+                    }}
+                    description="Update the amount of the transaction for match the correct amount from user payment"
+                    value={objData?.amount}
+                  />
+                </div>
+              </div>
+            </ModalBody>
+            <ModalFooter className="pt-4">
+              <ModalClose>Close</ModalClose>
+              <Button intent="light/dark" type="submit">
+                Update Now
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Form>
+      </ModalOverlay>
     </>
   )
 }
