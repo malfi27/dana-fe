@@ -118,6 +118,9 @@ export const TransactionTable = () => {
                   <TableColumn className={`text-nowrap`}>Type</TableColumn>
                   <TableColumn className={`text-nowrap`}>Amount</TableColumn>
                   <TableColumn className={`text-nowrap`}>
+                    Amount Before Update
+                  </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
                     Payment Status
                   </TableColumn>
                   <TableColumn className={`text-nowrap`}>
@@ -158,6 +161,16 @@ export const TransactionTable = () => {
                                   currency: 'IDR',
                                   maximumFractionDigits: 0
                                 }).format(item?.amount)
+                              : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.amount_brefore_update
+                              ? //Rupiah
+                                new Intl.NumberFormat('id-ID', {
+                                  style: 'currency',
+                                  currency: 'IDR',
+                                  maximumFractionDigits: 0
+                                }).format(item?.amount_brefore_update)
                               : '-'}
                           </TableCell>
                           <TableCell>
