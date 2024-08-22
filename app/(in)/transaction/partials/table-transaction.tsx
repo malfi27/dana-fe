@@ -313,27 +313,24 @@ export const TransactionTable = () => {
             e.preventDefault()
             toast.promise(
               waitForApiResponse(
-                mutateAsync(
-                  {
-                    invoice_number: objData?.invoice_number,
-                    amount: objData?.amount
-                  },
-                  {
-                    onSuccess: (data) => {
-                      if (data?.status === 200) {
-                        refetch()
-                        setOpen(false)
-                      }
-                    }
-                  }
-                )
-              )
-            ),
+                mutateAsync({
+                  invoice_number: objData?.invoice_number,
+                  amount: objData?.amount
+                })
+              ),
               {
-                loading: 'Updating Transaction...',
-                success: 'Transaction Updated',
+                loading: 'Updating transaction...',
+                success: (data) => {
+                  setOpen(false)
+                  setTimeout(() => {
+                    refetch()
+                  }, 400)
+
+                  return `Transaction updated successfully`
+                },
                 error: 'Failed to update transaction'
               }
+            )
           }}
         >
           <ModalContent size="2xl">
