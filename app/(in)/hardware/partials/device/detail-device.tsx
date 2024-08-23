@@ -231,6 +231,9 @@ export function DetailDevice() {
                 <TableColumn className={`text-nowrap`}>NIK</TableColumn>
                 <TableColumn className={`text-nowrap`}>Email</TableColumn>
                 <TableColumn className={`text-nowrap`}>PIN</TableColumn>
+                <TableColumn className={`text-nowrap`}>
+                  Whatsapp Status
+                </TableColumn>
                 <TableColumn className={`text-nowrap`}></TableColumn>
               </TableHeader>
               <TableBody
@@ -264,6 +267,22 @@ export function DetailDevice() {
                         <TableCell>{item?.nik ? item?.nik : '-'}</TableCell>
                         <TableCell>{item?.email ? item?.email : '-'}</TableCell>
                         <TableCell>{item?.pin ? item?.pin : '-'}</TableCell>
+                        <TableCell>
+                          <Badge
+                            shape="circle"
+                            className={`capitalize [&_svg]:size-3`}
+                            intent={
+                              item?.whatsapp_status === 'active'
+                                ? 'success'
+                                : 'danger'
+                            }
+                          >
+                            {item.whatsapp_status
+                              ? item?.whatsapp_status
+                              : 'Not Ready'}
+                          </Badge>
+                        </TableCell>
+
                         <TableCell className="flex justify-end">
                           <Menu>
                             <Button
