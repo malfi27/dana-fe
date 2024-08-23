@@ -30,7 +30,7 @@ export function UserDropdownMenu() {
       <MenuTrigger className="rounded-full">
         <Avatar
           className="size-8"
-          // src="https://github.com/malfi27.png"
+          // src="https://github.com/pgdana.png"
           initials="PG"
         />
       </MenuTrigger>
@@ -39,7 +39,7 @@ export function UserDropdownMenu() {
           <MenuHeader separator>
             <div className="font-medium">PG Dana</div>
             <p className="text-sm font-normal text-muted-fg">
-              breaknolimit@gmail.com
+              pgdana@gmail.com
             </p>
           </MenuHeader>
           <MenuItem href={'/account'}>

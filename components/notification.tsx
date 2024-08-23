@@ -82,42 +82,9 @@ export function Notification() {
 const dataNotifications = [
   {
     id: 1,
-    title: 'Welcome to Provision',
+    title: 'Welcome to PG Dana',
     description:
       'We are happy to have you on board. We are looking forward to working with you.',
-    status: 'unread',
-    noted: true
-  },
-  {
-    id: 2,
-    title: 'New feature: Dark mode',
-    description:
-      'We have added a new feature that allows you to switch to dark mode. Try it out now.',
-    status: 'read',
-    noted: false
-  },
-  {
-    id: 3,
-    title: 'New feature: Notifications',
-    description:
-      'We have added a new feature that allows you to receive notifications. Try it out now.',
-    status: 'read',
-    icon: IconBell,
-    noted: true
-  },
-  {
-    id: 4,
-    title: 'New feature: Billing',
-    description:
-      'We have added a new feature that allows you to manage your billing. Try it out now.',
-    status: 'unread',
-    noted: false
-  },
-  {
-    id: 5,
-    title: 'New feature: Archive',
-    description:
-      'We have added a new feature that allows you to archive your data. Try it out now.',
     status: 'unread',
     noted: true
   }
