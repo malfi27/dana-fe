@@ -121,6 +121,9 @@ export const TransactionTable = () => {
                     Amount Before Update
                   </TableColumn>
                   <TableColumn className={`text-nowrap`}>
+                    Account Execution
+                  </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
                     Payment Status
                   </TableColumn>
                   <TableColumn className={`text-nowrap`}>
@@ -129,7 +132,6 @@ export const TransactionTable = () => {
                   <TableColumn className={`text-nowrap`}>
                     Automation ID
                   </TableColumn>
-
                   <TableColumn className={`text-nowrap`}></TableColumn>
                 </TableHeader>
                 <TableBody
@@ -172,6 +174,9 @@ export const TransactionTable = () => {
                                   maximumFractionDigits: 0
                                 }).format(item?.amount_brefore_update)
                               : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.account ? item?.account?.phone_number : '-'}
                           </TableCell>
                           <TableCell>
                             <Badge
