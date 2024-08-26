@@ -38,12 +38,12 @@ export const PaymentSection = () => {
               </div>
               <div className="space-y-1">
                 <CardTitle>Payment Gateway</CardTitle>
-                <CardDescription>Secure payment with PG Dana</CardDescription>
+                <CardDescription>Secure payment with Dana</CardDescription>
               </div>
             </div>
             <div className="space-y-4 text-end text-sm [&_div]:font-semibold [&_label]:text-muted-fg">
               <div>
-                <label>Total Bill</label>
+                <label>Jumlah Tagihan</label>
                 <div>
                   {data?.data?.amount
                     ? //Format idr
@@ -59,10 +59,12 @@ export const PaymentSection = () => {
           </div>
           <div className="space-y-4 border-b border-border p-4">
             <Note intent="secondary">
-              <NoteTitle>Info</NoteTitle>
-              <NoteDescription>
-                Please dont refresh this page, your payment will be processed
-                automatically
+              <NoteTitle>Perhatian</NoteTitle>
+              <NoteDescription className="text-xs">
+                Jangan merefresh halaman ini. Pembayaran Anda akan diproses
+                secara otomatis. Silakan scan QR dibawah ini menggunakan
+                aplikasi DANA dan lakukan aktivitas transfer dana dari akun Anda
+                menuju akun yang sudah kami tentukan.
               </NoteDescription>
             </Note>
             <div className="flex items-center justify-center">
@@ -78,13 +80,17 @@ export const PaymentSection = () => {
                 <div className="flex flex-col items-center py-8">
                   <IconGalleryFill className="size-32 text-muted-fg" />
                   <p className="text-sm text-muted-fg">
-                    Please wait while we generate the QR code
+                    Mohon Tunggu QR Sedang Diproses... 🤖
                   </p>
                 </div>
               )}
             </div>
           </div>
           <div className="space-y-2 p-4">
+            <p className="text-center text-xs text-muted-fg">
+              Apabila transfer dana sudah selesai, silakan menekan tombol
+              dibawah ini untuk menyelesaikan pembayaran Anda.
+            </p>
             <Button
               onPress={() => {
                 toast.promise(
@@ -94,9 +100,9 @@ export const PaymentSection = () => {
                     })
                   ),
                   {
-                    loading: 'Please Wait...',
-                    success: 'Payment confirmed',
-                    error: 'Failed to confirm payment'
+                    loading: 'Loading...',
+                    success: 'Konfirmasi pembayaran berhasil..',
+                    error: 'Gagal konfirmasi pembayaran'
                   }
                 )
               }}
@@ -104,11 +110,10 @@ export const PaymentSection = () => {
               intent="light/dark"
               className="w-full"
             >
-              {isPending ? 'Please Wait...' : 'Confirm Payment'}
+              {isPending
+                ? 'Mohon Tunggu...'
+                : 'Saya Sudah Transfer, Konfirmasi Pembayaran'}
             </Button>
-            <p className="text-center text-xs text-muted-fg">
-              Allready paid ? Click this button to confirm your payment
-            </p>
           </div>
         </div>
       </div>
