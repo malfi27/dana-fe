@@ -30,7 +30,6 @@ const chartConfig = {
     label: 'Total Amount',
     color: 'hsl(var(--chart-1))'
   },
-
   unpaidAmount: {
     label: 'Unpaid Amount',
     color: 'hsl(var(--chart-5))'
@@ -153,10 +152,10 @@ export function TransactionStatistic() {
               }
             />
             <Area
-              dataKey="unpaidAmount"
+              dataKey="paidAmount"
               type="natural"
-              fill="url(#fillunpaidAmount)"
-              stroke="var(--color-unpaidAmount)"
+              fill="url(#fillpaidAmount)"
+              stroke="var(--color-paidAmount)"
               stackId="a"
             />
             <Area
@@ -167,12 +166,13 @@ export function TransactionStatistic() {
               stackId="a"
             />
             <Area
-              dataKey="paidAmount"
+              dataKey="unpaidAmount"
               type="natural"
-              fill="url(#fillpaidAmount)"
-              stroke="var(--color-paidAmount)"
+              fill="url(#fillunpaidAmount)"
+              stroke="var(--color-unpaidAmount)"
               stackId="a"
             />
+
             <ChartLegend content={<ChartLegendContent />} />
           </AreaChart>
         </ChartContainer>
