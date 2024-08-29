@@ -175,6 +175,12 @@ export const HistoryGateway = () => {
                   <TableColumn className={`text-nowrap`}>
                     Account Register
                   </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
+                    Created At
+                  </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
+                    Updated At
+                  </TableColumn>
 
                   <TableColumn className={`text-nowrap`}></TableColumn>
                 </TableHeader>
@@ -231,6 +237,22 @@ export const HistoryGateway = () => {
                           <TableCell>
                             {item?.register_account
                               ? item?.register_account
+                              : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.createdAt
+                              ? new Intl.DateTimeFormat('id-ID', {
+                                  dateStyle: 'full',
+                                  timeStyle: 'short'
+                                }).format(new Date(item?.createdAt))
+                              : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.updatedAt
+                              ? new Intl.DateTimeFormat('id-ID', {
+                                  dateStyle: 'full',
+                                  timeStyle: 'short'
+                                }).format(new Date(item?.updatedAt))
                               : '-'}
                           </TableCell>
                           <TableCell className="flex justify-end">
