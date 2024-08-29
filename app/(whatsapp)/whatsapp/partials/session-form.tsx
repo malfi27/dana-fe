@@ -69,7 +69,9 @@ export function WhatsappSessionForm() {
       countdown > 0
     ) {
       toast.error(
-        'Please wait for the countdown to finish before generating a new QR code for the same number.'
+        'Mohon tunggu selama ' +
+          countdown +
+          ' detik sebelum menghasilkan Kode QR baru untuk nomor yang sama, dan jika Anda sudah memindai Kode QR tersebut, harap tunggu selama 30 Detik setelah pemindaian.'
       )
       return
     }
@@ -174,7 +176,7 @@ export function WhatsappSessionForm() {
       <div className="space-y-1">
         <TextField
           isRequired
-          label="Whatsapp Number"
+          label="Nomor Whatsapp"
           prefix={'+62'}
           placeholder="812*****"
           value={form.whatsapp_number}
@@ -184,11 +186,11 @@ export function WhatsappSessionForm() {
             const whatsapp_number_regex = /^8[1-9][0-9]{8,11}$/
 
             if (!whatsapp_number.match(whatsapp_number_regex)) {
-              return 'Please enter a valid phone number (10-13 digits) starting with 8 and not starting with 0'
+              return 'Masukan nomor whatsapp yang valid (contoh: 81234567890)'
             }
           }}
           onChange={(e) => setForm({ ...form, whatsapp_number: e })}
-          errorMessage={'Please enter a valid phone number'}
+          errorMessage={'Masukan nomor whatsapp yang valid'}
         />
         {resAccount?.response?.status === 400 && (
           <p className="text-sm font-medium text-muted-fg">
@@ -225,11 +227,11 @@ export function WhatsappSessionForm() {
           countdown > 0 &&
           storedNumber === form.whatsapp_number && (
             <Note intent="danger">
-              <NoteTitle>Info</NoteTitle>
+              <NoteTitle>Informasi</NoteTitle>
               <NoteDescription>
-                Please wait for {countdown} seconds before generating a new QR
-                Code for the same number, and if you already scanned the QR Code
-                please wait for 30 Seconds after scanning.
+                Mohon tunggu selama {countdown} detik sebelum menghasilkan Kode
+                QR baru untuk nomor yang sama, dan jika Anda sudah memindai Kode
+                QR tersebut, harap tunggu selama 30 Detik setelah pemindaian.
               </NoteDescription>
             </Note>
           )
@@ -247,9 +249,7 @@ export function WhatsappSessionForm() {
           type="submit"
           intent="light/dark"
         >
-          {isPending || pendingGenerateQR
-            ? 'Please Wait...'
-            : 'Generate QR Code'}
+          {isPending || pendingGenerateQR ? 'Process...' : 'Dapatkan QR Code'}
         </Button>
       </div>
     </Form>

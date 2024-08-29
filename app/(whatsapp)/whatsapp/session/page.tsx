@@ -2,8 +2,8 @@ import { SectionTitle } from 'ui/section-title'
 import { WhatsappSessionForm } from '../partials/session-form'
 
 export const metadata = {
-  title: 'Whatsapp Session',
-  description: 'Scan the QR code to start a Whatsapp session'
+  title: 'Whatsapp',
+  description: 'Buat sesi baru di Whatsapp, dan dapatkan QR Code untuk login.'
 }
 
 export default function Page() {
