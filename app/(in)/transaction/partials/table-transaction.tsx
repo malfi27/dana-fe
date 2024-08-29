@@ -132,6 +132,10 @@ export const TransactionTable = () => {
                   <TableColumn className={`text-nowrap`}>
                     Automation ID
                   </TableColumn>
+                  <TableColumn className={`text-nowrap`}>
+                    Created At
+                  </TableColumn>
+                  <TableColumn className={`text-nowrap`}>Update At</TableColumn>
                   <TableColumn className={`text-nowrap`}></TableColumn>
                 </TableHeader>
                 <TableBody
@@ -216,6 +220,22 @@ export const TransactionTable = () => {
                           </TableCell>
                           <TableCell>
                             {item?.automation_id ? item?.automation_id : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.createdAt
+                              ? new Intl.DateTimeFormat('id-ID', {
+                                  dateStyle: 'full',
+                                  timeStyle: 'short'
+                                }).format(new Date(item?.createdAt))
+                              : '-'}
+                          </TableCell>
+                          <TableCell>
+                            {item?.updatedAt
+                              ? new Intl.DateTimeFormat('id-ID', {
+                                  dateStyle: 'full',
+                                  timeStyle: 'short'
+                                }).format(new Date(item?.updatedAt))
+                              : '-'}
                           </TableCell>
 
                           <TableCell className="flex justify-end">
