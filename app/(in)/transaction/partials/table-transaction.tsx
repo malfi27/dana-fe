@@ -1,6 +1,5 @@
 import { useCSUpdateAmount } from '@/app/api/payment/cs-update-amount'
 import { useGetListPaymentTransaction } from '@/app/api/payment/get-payment'
-import { Contenteditable } from '@/components/contenteditable'
 import {
   Badge,
   Button,
@@ -34,7 +33,7 @@ import {
 } from '@/components/ui'
 import { wait, waitForApiResponse } from '@/lib/utils'
 import {
-  IconBulletFill,
+  IconBarcode,
   IconChevronLgLeft,
   IconChevronLgRight,
   IconChevronsLgLeft,
@@ -256,6 +255,13 @@ export const TransactionTable = () => {
                                 >
                                   <IconDuplicate />
                                   Copy ID
+                                </MenuItem>
+                                <MenuItem
+                                  href={`/payment?merchantId=${item?.id}&merchantReferenceNum=${item?.invoice_number}`}
+                                  target="_blank"
+                                >
+                                  <IconBarcode />
+                                  Detail Barcode
                                 </MenuItem>
                                 {item?.automation_status === 'Failed' ? (
                                   <MenuItem
