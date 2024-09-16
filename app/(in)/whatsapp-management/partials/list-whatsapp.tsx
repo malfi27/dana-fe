@@ -52,7 +52,7 @@ export const ListWhatsappManagementAccount = () => {
         <CardContent>
           <div className="space-y-4 p-4">
             <Select
-              label={'Period Time'}
+              label={'Status'}
               className={`w-40`}
               name="user"
               onSelectionChange={(e) => {
