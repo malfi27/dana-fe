@@ -2,6 +2,7 @@
 
 import { Logo } from '@/components/logo'
 import {
+  IconBrandWhatsapp,
   IconDatabase,
   IconDeviceDesktop,
   IconFolderBox,
@@ -57,6 +58,12 @@ export const navigations = [
     label: 'Database Bank',
     href: '/bank',
     icon: IconDatabase,
+    badge: false
+  },
+  {
+    label: 'Whatsapp Session',
+    href: '/whatsapp-management',
+    icon: IconBrandWhatsapp,
     badge: false
   },
   {

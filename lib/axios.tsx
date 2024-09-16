@@ -17,6 +17,7 @@ export const axiosApi = axios.create({
 export const axiosWhatsappApi = axios.create({
   baseURL: process.env.WHATSAPP_API_URL,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'x-secure-information': process.env.SECURE_INF
   }
 })
