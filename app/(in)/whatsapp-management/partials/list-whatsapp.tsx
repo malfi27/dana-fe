@@ -3,6 +3,7 @@
 import { useGetListWhatsappAccount } from '@/app/api/whatsapp/get-whatsapp'
 import {
   Badge,
+  Button,
   Card,
   CardContent,
   CardDescription,
@@ -20,11 +21,19 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui'
+import {
+  IconChevronLgLeft,
+  IconChevronLgRight,
+  IconChevronsLgLeft,
+  IconChevronsLgRight
+} from '@irsyadadl/paranoid'
 import { useState } from 'react'
 
 export const ListWhatsappManagementAccount = () => {
   const [state, setState] = useState<any>({
-    whatsapp_status: ''
+    whatsapp_status: '',
+    page: 1,
+    limit: 25
   })
   //Get list group
   const { data, isLoading } = useGetListWhatsappAccount(state)
@@ -88,7 +97,7 @@ export const ListWhatsappManagementAccount = () => {
                   renderEmptyState={() => (
                     <div className="p-2 text-center">No data found.</div>
                   )}
-                  items={data?.data}
+                  items={data?.data?.data}
                 >
                   {isLoading ? (
                     <TableRow>
@@ -142,6 +151,63 @@ export const ListWhatsappManagementAccount = () => {
                   )}
                 </TableBody>
               </Table>
+            </div>
+            {/* Pagination */}
+            <div className="flex w-full items-center justify-between">
+              <Select
+                aria-labelledby="limit"
+                aria-describedby="limit"
+                className={`w-16`}
+                name="limit"
+                onSelectionChange={(e) => {
+                  setState({ ...state, limit: parseInt(e.toString()), page: 1 })
+                }}
+                placeholder={state?.limit.toString() || '25'}
+              >
+                <SelectItem id="25">25</SelectItem>
+                <SelectItem id="50">50</SelectItem>
+                <SelectItem id="100">100</SelectItem>
+                <SelectItem id="200">200</SelectItem>
+              </Select>
+              <div className="flex items-center gap-2">
+                <Button
+                  appearance="plain"
+                  isDisabled={state.page === 1}
+                  onPress={() => {
+                    setState({ ...state, page: 1 })
+                  }}
+                >
+                  <IconChevronsLgLeft />
+                </Button>
+                <Button
+                  appearance="plain"
+                  isDisabled={state.page === 1}
+                  onPress={() => {
+                    setState({ ...state, page: state.page - 1 })
+                  }}
+                >
+                  <IconChevronLgLeft />
+                </Button>
+                <div className="text-xs">{`${state?.page} / ${data?.data?.totalPages ? data?.data?.totalPages : '1'}`}</div>
+                <Button
+                  isDisabled={state.page === data?.data?.totalPages}
+                  appearance="plain"
+                  onPress={() => {
+                    setState({ ...state, page: state.page + 1 })
+                  }}
+                >
+                  <IconChevronLgRight />
+                </Button>
+                <Button
+                  isDisabled={state.page === data?.data?.totalPages}
+                  appearance="plain"
+                  onPress={() => {
+                    setState({ ...state, page: data?.data?.totalPages })
+                  }}
+                >
+                  <IconChevronsLgRight />
+                </Button>
+              </div>
             </div>
           </div>
         </CardContent>
