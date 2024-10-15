@@ -1,255 +1,122 @@
 'use client'
 
 import { useCreateWhatsapp } from '@/app/api/whatsapp/create-whatsapp'
-import { useGenerateQRCode } from '@/app/api/whatsapp/scan-whatsapp'
+import { useGetDetailWhatsappSession } from '@/app/api/whatsapp/detail-whatsapp-session'
 import { Note, NoteDescription, NoteTitle } from '@/components/ui'
 import { waitForApiResponse } from '@/lib/utils'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from 'ui/button'
 import { Form } from 'ui/form'
 import { TextField } from 'ui/text-field'
-import Cookies from 'js-cookie'
 
 export function WhatsappSessionForm() {
   const [form, setForm] = useState<WhatsappSessionFormProps>({
-    whatsapp_number: ''
+    whatsapp_name: ''
   })
-
-  const [countdown, setCountdown] = useState<number | null>(null)
-  const [storedNumber, setStoredNumber] = useState<string | null>(null)
-
-  useEffect(() => {
-    const savedCountdown = Cookies.get('countdown-whatsapp-qr')
-    const savedNumber = Cookies.get('countdown-whatsapp-number')
-    if (savedCountdown && savedNumber) {
-      setCountdown(parseInt(savedCountdown))
-      setStoredNumber(savedNumber)
-    }
-  }, [])
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout
-    if (countdown !== null && countdown > 0) {
-      timer = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev === null || prev <= 1) {
-            Cookies.remove('countdown-whatsapp-qr')
-            Cookies.remove('countdown-whatsapp-number')
-            clearInterval(timer)
-            return null
-          }
-          Cookies.set('countdown-whatsapp-qr', (prev - 1).toString(), {
-            expires: new Date(Date.now() + 1000 * (prev - 1))
-          })
-          return prev - 1
-        })
-      }, 1000)
-    }
-    return () => clearInterval(timer)
-  }, [countdown])
+  const [stateId, setStateId] = useState<any>({
+    id: ''
+  })
 
   // Data fetching
   const { data: resAccount, mutateAsync, isPending } = useCreateWhatsapp()
-  const {
-    data: resQr,
-    mutateAsync: mutateGenerateQrCode,
-    isPending: pendingGenerateQR
-  } = useGenerateQRCode()
+  //Detail Whatsapp Session
+  const { data: resDetailSession, isLoading: isLoadingDetailSession } =
+    useGetDetailWhatsappSession(stateId)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const whatsapp_number = form.whatsapp_number
-
-    // Check if the countdown should be applied for the same number
-    if (
-      storedNumber === whatsapp_number &&
-      countdown !== null &&
-      countdown > 0
-    ) {
-      toast.error(
-        'Mohon tunggu selama ' +
-          countdown +
-          ' detik sebelum menghasilkan Kode QR baru untuk nomor yang sama, dan jika Anda sudah memindai Kode QR tersebut, harap tunggu selama 30 Detik setelah pemindaian.'
-      )
-      return
-    }
+    const whatsapp_name = form.whatsapp_name
 
     toast.promise(
       waitForApiResponse(
         mutateAsync(
-          {
-            whatsapp_number: whatsapp_number
-          },
+          { whatsapp_name },
           {
             onSuccess: (data) => {
-              if (data?.status === 200) {
-                toast.promise(
-                  waitForApiResponse(
-                    mutateGenerateQrCode(
-                      {
-                        session: whatsapp_number,
-                        requestType: 'connection'
-                      },
-                      {
-                        onSuccess: () => {
-                          setCountdown(30)
-                          setStoredNumber(whatsapp_number)
-                          Cookies.set('countdown-whatsapp-qr', '30', {
-                            expires: new Date(Date.now() + 30000)
-                          })
-                          Cookies.set(
-                            'countdown-whatsapp-number',
-                            whatsapp_number,
-                            {
-                              expires: new Date(Date.now() + 30000)
-                            }
-                          )
-                        }
-                      }
-                    )
-                  ),
-                  {
-                    loading: 'Generating QR Code...',
-                    success: 'QR Code Generated Successfully',
-                    error: 'Failed to Generate QR Code'
-                  }
-                )
-              } else if (
-                data?.response?.status === 400 &&
-                data?.response?.data?.message ===
-                  'Whatsapp number already exists'
-              ) {
-                toast.promise(
-                  waitForApiResponse(
-                    mutateGenerateQrCode(
-                      {
-                        session: whatsapp_number,
-                        requestType: 'connection'
-                      },
-                      {
-                        onSuccess: () => {
-                          setCountdown(30)
-                          setStoredNumber(whatsapp_number)
-                          Cookies.set('countdown-whatsapp-qr', '30', {
-                            expires: new Date(Date.now() + 30000)
-                          })
-                          Cookies.set(
-                            'countdown-whatsapp-number',
-                            whatsapp_number,
-                            {
-                              expires: new Date(Date.now() + 30000)
-                            }
-                          )
-                        }
-                      }
-                    )
-                  ),
-                  {
-                    loading: 'Generating QR Code...',
-                    success: 'QR Code Generated Successfully',
-                    error: 'Failed to Generate QR Code'
-                  }
-                )
+              if (data?.response?.status === 400) {
+                setStateId({ id: whatsapp_name })
               }
             }
           }
         )
       ),
       {
-        loading: 'Registering Whatsapp Number...',
-        success: 'Whatsapp Number Added Successfully',
-        error: 'Failed to Add Whatsapp Number'
+        loading: 'Processing...',
+        success: 'Whatsapp number has been added',
+        error: 'Failed to add whatsapp number'
       }
     )
   }
 
   return (
     <Form onSubmit={handleSubmit} className="space-y-4">
-      {resQr?.status === 200 && resQr?.data?.message && (
-        <Note intent={resQr?.data?.type === 'ready' ? 'success' : 'warning'}>
-          <NoteTitle>Info Status Whatsapp</NoteTitle>
-          <NoteDescription>{resQr?.data?.message}</NoteDescription>
-        </Note>
-      )}
-      <div className="space-y-1">
+      <div>
         <TextField
           isRequired
           label="Nomor Whatsapp"
           prefix={'+62'}
           placeholder="812*****"
-          value={form.whatsapp_number}
-          name="whatsapp_number"
+          value={form.whatsapp_name}
+          name="whatsapp_name"
           validate={(e) => {
-            const whatsapp_number = e
-            const whatsapp_number_regex = /^8[1-9][0-9]{8,11}$/
+            const whatsapp_name = e
+            const whatsapp_name_regex = /^8[1-9][0-9]{8,11}$/
 
-            if (!whatsapp_number.match(whatsapp_number_regex)) {
+            if (!whatsapp_name.match(whatsapp_name_regex)) {
               return 'Masukan nomor whatsapp yang valid (contoh: 81234567890)'
             }
           }}
-          onChange={(e) => setForm({ ...form, whatsapp_number: e })}
+          onChange={(e) => setForm({ ...form, whatsapp_name: e })}
           errorMessage={'Masukan nomor whatsapp yang valid'}
         />
         {resAccount?.response?.status === 400 && (
-          <p className="text-sm font-medium text-muted-fg">
+          <p className="mt-2 text-sm font-medium text-muted-fg">
             <span className="text-danger forced-colors:text-[Mark]">
               {resAccount?.response?.data?.message},
-            </span>{' '}
-            But you can still generate a new QR
+            </span>
           </p>
         )}
-      </div>
-
-      {resQr?.data?.qrImage && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-center">
-            {
-              //QR Code Image Expired after 60 seconds
-              countdown !== null && countdown > 0 && (
-                <Image
-                  alt="QR Code"
-                  src={resQr?.data?.qrImage}
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              )
-            }
-          </div>
-        </div>
-      )}
-
-      {
-        //If Countdown is active and phone number is same as stored number
-        countdown !== null &&
-          countdown > 0 &&
-          storedNumber === form.whatsapp_number && (
-            <Note intent="danger">
-              <NoteTitle>Informasi</NoteTitle>
+        {resAccount?.status === 200 ? (
+          <div className="mt-4 flex flex-col items-center justify-center space-y-4">
+            <Note intent="success">
+              <NoteTitle>{resAccount?.data?.message}</NoteTitle>
               <NoteDescription>
-                Mohon tunggu selama {countdown} detik sebelum menghasilkan Kode
-                QR baru untuk nomor yang sama, dan jika Anda sudah memindai Kode
-                QR tersebut, harap tunggu selama 30 Detik setelah pemindaian.
+                Success add whatsapp number, please scan the QR code to continue
               </NoteDescription>
             </Note>
-          )
-      }
+            <Image
+              alt="QR Code"
+              src={resAccount?.data?.data?.qr_code_image}
+              width={200}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+        ) : resDetailSession?.status === 200 ? (
+          <div className="mt-4 flex flex-col items-center justify-center space-y-4">
+            <Note intent="info">
+              <NoteTitle>{resDetailSession?.data?.message}</NoteTitle>
+              <NoteDescription>
+                Your whatsapp number has been added, please scan the QR code to
+                continue
+              </NoteDescription>
+            </Note>
+            <Image
+              alt="QR Code"
+              src={resDetailSession?.data?.data?.qr_code_image}
+              width={200}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+        ) : null}
+      </div>
 
-      <div className="flex justify-end">
-        <Button
-          isDisabled={
-            isPending ||
-            pendingGenerateQR ||
-            (countdown !== null &&
-              countdown > 0 &&
-              storedNumber === form.whatsapp_number)
-          }
-          type="submit"
-          intent="light/dark"
-        >
-          {isPending || pendingGenerateQR ? 'Process...' : 'Dapatkan QR Code'}
+      <div className="mt-2 flex w-full justify-end">
+        <Button isDisabled={isPending} type="submit" intent="light/dark">
+          {isPending ? 'Process...' : 'Add Whatsapp'}
         </Button>
       </div>
     </Form>
@@ -257,5 +124,5 @@ export function WhatsappSessionForm() {
 }
 
 interface WhatsappSessionFormProps {
-  whatsapp_number: string
+  whatsapp_name: string
 }

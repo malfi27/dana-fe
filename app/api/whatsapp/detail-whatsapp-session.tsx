@@ -3,16 +3,14 @@
 import { axiosWhatsappApi } from '@/lib/axios'
 import { useQuery } from '@tanstack/react-query'
 
-interface TransactionParams {
-  status?: string
-  page?: number
-  limit?: number
+interface Props {
+  id?: string
 }
 
-const apiFetch = (params: TransactionParams) => {
-  const { status, page, limit } = params
+const apiFetch = (params: Props) => {
+  const { id } = params
   const request = axiosWhatsappApi
-    .get(`/whatsapp-sessions`, { params: { status, page, limit } })
+    .get(`/whatsapp-sessions/${id}`)
     .then((responses) => {
       return responses
     })
@@ -22,9 +20,10 @@ const apiFetch = (params: TransactionParams) => {
   return request
 }
 
-export const useGetListWhatsappAccount = (params: TransactionParams = {}) =>
+export const useGetDetailWhatsappSession = (params: Props = {}) =>
   useQuery({
-    queryKey: ['List Whatsapp Session', params],
+    enabled: !!params.id,
+    queryKey: ['Detail Whatsapp Session', params],
     queryFn: () => apiFetch(params),
     refetchOnWindowFocus: false,
     refetchOnMount: false
