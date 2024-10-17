@@ -12,7 +12,7 @@ interface TransactionParams {
 const apiFetch = (params: TransactionParams) => {
   const { status, page, limit } = params
   const request = axiosWhatsappApi
-    .get(`/whatsapp-sessions`, { params: { status, page, limit } })
+    .get(`/session`, { params: { status, page, limit } })
     .then((responses) => {
       return responses
     })

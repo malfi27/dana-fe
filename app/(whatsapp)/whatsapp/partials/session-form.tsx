@@ -74,38 +74,37 @@ export function WhatsappSessionForm() {
         {resAccount?.response?.status === 400 && (
           <p className="mt-2 text-sm font-medium text-muted-fg">
             <span className="text-danger forced-colors:text-[Mark]">
-              {resAccount?.response?.data?.message},
+              {resAccount?.response?.data?.message}
             </span>
           </p>
         )}
-        {resAccount?.status === 200 ? (
+        {resAccount?.status === 200 || resAccount?.status === 201 ? (
           <div className="mt-4 flex flex-col items-center justify-center space-y-4">
-            <Note intent="success">
-              <NoteTitle>{resAccount?.data?.message}</NoteTitle>
+            <Note intent="success" className="w-full">
+              <NoteTitle>Success</NoteTitle>
               <NoteDescription>
-                Success add whatsapp number, please scan the QR code to continue
+                {resAccount?.data?.data?.message}
               </NoteDescription>
             </Note>
             <Image
               alt="QR Code"
-              src={resAccount?.data?.data?.qr_code_image}
+              src={resAccount?.data?.data?.qrImage}
               width={200}
               height={200}
               className="object-contain"
             />
           </div>
-        ) : resDetailSession?.status === 200 ? (
+        ) : resDetailSession?.status === 200 || resAccount?.status === 201 ? (
           <div className="mt-4 flex flex-col items-center justify-center space-y-4">
-            <Note intent="info">
-              <NoteTitle>{resDetailSession?.data?.message}</NoteTitle>
+            <Note intent="info" className="w-full">
+              <NoteTitle>Success</NoteTitle>
               <NoteDescription>
-                Your whatsapp number has been added, please scan the QR code to
-                continue
+                Status : {resDetailSession?.data?.data?.session_status}
               </NoteDescription>
             </Note>
             <Image
               alt="QR Code"
-              src={resDetailSession?.data?.data?.qr_code_image}
+              src={resDetailSession?.data?.data?.qrImage}
               width={200}
               height={200}
               className="object-contain"

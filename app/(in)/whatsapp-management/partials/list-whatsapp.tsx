@@ -96,7 +96,7 @@ export const ListWhatsappManagementAccount = () => {
               defaultSelectedKey={state?.status}
               placeholder={state?.status || 'All'}
             >
-              <SelectItem id="all">All</SelectItem>
+              <SelectItem id="">All</SelectItem>
               <SelectItem id="WORKING">{`Active`}</SelectItem>
               <SelectItem id="SCAN_QR_CODE">{`QR Code`}</SelectItem>
               <SelectItem id="FAILED">{`Failed`}</SelectItem>
@@ -113,9 +113,6 @@ export const ListWhatsappManagementAccount = () => {
                 <TableHeader>
                   <TableColumn className={`text-nowrap`}>
                     Whatsapp Number
-                  </TableColumn>
-                  <TableColumn className={`text-nowrap`}>
-                    Worker Name
                   </TableColumn>
                   <TableColumn className={`text-nowrap`}>
                     Whatsapp Status
@@ -144,29 +141,30 @@ export const ListWhatsappManagementAccount = () => {
                             {item?.session_name ? item?.session_name : '-'}
                           </TableCell>
 
-                          <TableCell className={`capitalize`}>
-                            {item?.worker_name ? item?.worker_name : '-'}
-                          </TableCell>
                           <TableCell>
-                            {item?.status ? (
+                            {item?.session_status ? (
                               <Badge
                                 shape="circle"
                                 className={`capitalize [&_svg]:size-3`}
                                 intent={
-                                  item?.status === 'SCAN_QR_CODE'
+                                  item?.session_status === 'SCAN_QR_CODE'
                                     ? 'warning'
-                                    : item?.status === 'WORKING'
+                                    : item?.session_status === 'WORKING'
                                       ? 'success'
-                                      : 'danger'
+                                      : item?.session_status === 'STARTING'
+                                        ? 'secondary'
+                                        : 'danger'
                                 }
                               >
                                 <IconBulletFill />
-                                {item.status
-                                  ? item?.status === 'SCAN_QR_CODE'
+                                {item.session_status
+                                  ? item?.session_status === 'SCAN_QR_CODE'
                                     ? 'Scan QR'
-                                    : item?.status === 'WORKING'
+                                    : item?.session_status === 'WORKING'
                                       ? 'Active'
-                                      : 'Non Active'
+                                      : item?.session_status === 'STARTING'
+                                        ? 'Starting Session'
+                                        : 'Non Active'
                                   : '-'}
                               </Badge>
                             ) : (
@@ -294,8 +292,8 @@ export const ListWhatsappManagementAccount = () => {
               Detail Whatsapp Session
               <span className="font-bold">
                 {' '}
-                {resDetailSession?.data?.data?.whatsapp_name
-                  ? resDetailSession?.data?.data?.whatsapp_name
+                {resDetailSession?.data?.data?.session_name
+                  ? resDetailSession?.data?.data?.session_name
                   : ''}
               </span>
             </ModalTitle>
@@ -315,24 +313,24 @@ export const ListWhatsappManagementAccount = () => {
                     <li>
                       <span className="text-muted-fg">Phone Number : </span>
                       <span className="font-medium">
-                        {resDetailSession?.data?.data?.whatsapp_name
-                          ? resDetailSession?.data?.data?.whatsapp_name
+                        {resDetailSession?.data?.data?.session_name
+                          ? resDetailSession?.data?.data?.session_name
                           : '-'}
                       </span>
                     </li>
                     <li>
                       <span className="text-muted-fg">Status : </span>
                       <span className="font-medium">
-                        {resDetailSession?.data?.data?.instance_status
-                          ? resDetailSession?.data?.data?.instance_status
+                        {resDetailSession?.data?.data?.session_status
+                          ? resDetailSession?.data?.data?.session_status
                           : '-'}
                       </span>
                     </li>
                   </ul>
-                  {resDetailSession?.data?.data?.qr_code_image ? (
+                  {resDetailSession?.data?.data?.qrImage ? (
                     <Image
                       alt="QR Code"
-                      src={resDetailSession?.data?.data?.qr_code_image}
+                      src={resDetailSession?.data?.data?.qrImage}
                       width={200}
                       height={200}
                       className="object-contain"

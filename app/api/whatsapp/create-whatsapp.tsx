@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 
 const fetchApi = async (body: any) => {
   const request = axiosWhatsappApi
-    .post(`/whatsapp-sessions`, body)
+    .post(`/session/${body?.whatsapp_name}`)
     .then((responses) => {
       return responses
     })

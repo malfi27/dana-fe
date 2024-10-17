@@ -10,7 +10,7 @@ interface Props {
 const apiFetch = (params: Props) => {
   const { id } = params
   const request = axiosWhatsappApi
-    .get(`/whatsapp-sessions/${id}`)
+    .get(`/session/${id}`)
     .then((responses) => {
       return responses
     })
