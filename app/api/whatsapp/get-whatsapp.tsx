@@ -4,15 +4,16 @@ import { axiosWhatsappApi } from '@/lib/axios'
 import { useQuery } from '@tanstack/react-query'
 
 interface TransactionParams {
+  session_name?: string
   status?: string
   page?: number
   limit?: number
 }
 
 const apiFetch = (params: TransactionParams) => {
-  const { status, page, limit } = params
+  const { session_name, status, page, limit } = params
   const request = axiosWhatsappApi
-    .get(`/session`, { params: { status, page, limit } })
+    .get(`/session`, { params: { session_name, status, page, limit } })
     .then((responses) => {
       return responses
     })

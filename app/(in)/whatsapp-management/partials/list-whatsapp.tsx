@@ -24,6 +24,7 @@ import {
   Note,
   NoteDescription,
   NoteTitle,
+  SearchField,
   Select,
   SelectItem,
   Table,
@@ -33,6 +34,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui'
+import { wait } from '@/lib/utils'
 import {
   IconBarcode,
   IconBulletFill,
@@ -54,6 +56,7 @@ export const ListWhatsappManagementAccount = () => {
   })
   const [state, setState] = useState<any>({
     status: '',
+    session_name: '',
     page: 1,
     limit: 25
   })
@@ -86,22 +89,34 @@ export const ListWhatsappManagementAccount = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-4 p-4">
-            <Select
-              label={'Status'}
-              className={`w-40`}
-              name="user"
-              onSelectionChange={(e) => {
-                setState({ ...state, status: e.toString() })
-              }}
-              defaultSelectedKey={state?.status}
-              placeholder={state?.status || 'All'}
-            >
-              <SelectItem id="">All</SelectItem>
-              <SelectItem id="WORKING">{`Active`}</SelectItem>
-              <SelectItem id="SCAN_QR_CODE">{`QR Code`}</SelectItem>
-              <SelectItem id="FAILED">{`Failed`}</SelectItem>
-              <SelectItem id="STARTING">{`Starting`}</SelectItem>
-            </Select>
+            <div className="flex items-end justify-between">
+              <Select
+                label={'Status'}
+                className={`w-40`}
+                name="user"
+                onSelectionChange={(e) => {
+                  setState({ ...state, status: e.toString() })
+                }}
+                defaultSelectedKey={state?.status}
+                placeholder={state?.status || 'All'}
+              >
+                <SelectItem id="">All</SelectItem>
+                <SelectItem id="WORKING">{`Active`}</SelectItem>
+                <SelectItem id="SCAN_QR_CODE">{`QR Code`}</SelectItem>
+                <SelectItem id="FAILED">{`Failed`}</SelectItem>
+                <SelectItem id="STARTING">{`Starting`}</SelectItem>
+              </Select>
+              <SearchField
+                aria-label="Search phone number"
+                placeholder="Search..."
+                className="w-full lg:max-w-52"
+                onChange={(e) => {
+                  wait(500).then(() => {
+                    setState({ ...state, session_name: e })
+                  })
+                }}
+              />
+            </div>
             {/* Table */}
             <div className="overflow-hidden rounded-md border bg-background">
               <Table
