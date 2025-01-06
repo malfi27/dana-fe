@@ -61,12 +61,6 @@ export const navigations = [
     badge: false
   },
   {
-    label: 'Whatsapp Session',
-    href: '/whatsapp-management',
-    icon: IconBrandWhatsapp,
-    badge: false
-  },
-  {
     id: 'tools',
     label: 'Tools',
     icon: IconToolbox,
