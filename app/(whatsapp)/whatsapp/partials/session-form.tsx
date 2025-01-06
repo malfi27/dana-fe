@@ -167,7 +167,8 @@ export function WhatsappSessionForm() {
           <div className="text-center">
             <h3 className="text-lg font-medium">Enter OTP Code</h3>
             <p className="text-sm text-muted-fg">
-              Kode Anda akan dikirim kurang dari:{' '}
+              Kode Anda akan dikirimkan melalui WhatsApp {form.phone_number}.
+              Waktu kurang dari:{' '}
               <span className="font-semibold">{formatTime(timeLeft)}</span>
             </p>
           </div>
