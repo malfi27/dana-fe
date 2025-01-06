@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 
 const fetchApi = async (body: any) => {
   const request = axiosApi
-    .post(`/whatsapp/login`, body)
+    .post(`/otp`, body)
     .then((responses) => {
       return responses
     })
@@ -13,9 +13,9 @@ const fetchApi = async (body: any) => {
   return request
 }
 
-export const useWhatsappLogin = () => {
+export const useSaveOtp = () => {
   return useMutation({
-    mutationKey: ['Create Whatsapp Session login to instance'],
+    mutationKey: ['Save OTP To Database'],
     mutationFn: fetchApi
   })
 }
