@@ -1,8 +1,9 @@
 'use client'
 
-import { useWhatsappLogin } from '@/app/api/whatsapp/create-whatsapp'
 import React, { useEffect, useState } from 'react'
 import type { OTPInputProps } from 'input-otp'
+import { toast } from 'sonner'
+
 import { Button } from 'ui/button'
 import { Form } from 'ui/form'
 import { TextField } from 'ui/text-field'
@@ -12,194 +13,452 @@ import {
   InputOTPSlot,
   SectionTitle
 } from '@/components/ui'
-import { toast } from 'sonner'
-import { waitForApiResponse } from '@/lib/utils'
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+  ModalOverlay,
+  ModalDescription,
+  ModalClose
+} from '@/components/ui'
+import { useWhatsappLogin } from '@/app/api/whatsapp/create-whatsapp'
 import { useSaveOtp } from '@/app/api/otp/save-otp'
+import { useGetDetailWhatsappLogin } from '@/app/api/whatsapp/get-detail-whatsapp-login'
+import { waitForApiResponse } from '@/lib/utils'
+import {
+  IconCheck,
+  IconDateTime,
+  IconLoader2,
+  IconLock,
+  IconMessage,
+  IconTriangleInfo,
+  IconX,
+  IconDevices,
+  IconDevicePhone,
+  IconPeople,
+  IconBrandWhatsapp
+} from '@irsyadadl/paranoid'
 
+// Types
 interface WhatsappSessionFormProps {
   phone_number: string
 }
 
+interface WhatsappLoginResponse {
+  status: number
+  data: {
+    message: string
+    account: {
+      _id: string
+      phone_number: string
+      name: string | null
+      email: string | null
+      balance: number
+      device?: {
+        device_number: string
+        device_ip: string
+      }
+    }
+    whatsappLogin: {
+      _id: string
+      status: string
+      reason: string | null
+    }
+    onlineInstances: Array<{
+      name: string
+      serial_no: string
+      status: string
+    }>
+  }
+}
+
+interface AutomationDetails {
+  data: {
+    data: {
+      status: string
+      reason: string | null
+      account: {
+        phone_number: string
+        name: string | null
+        balance: number
+      }
+      worker?: {
+        name: string
+        serial_name: string
+      }
+      created_at: string
+      updated_at: string
+    }
+  }
+}
+
+interface OtpSubmitData {
+  otp: string
+  sosmed: string
+  account: any
+}
+
+// Utility Functions
+const formatPhoneNumber = (phone: string): string => {
+  if (phone.startsWith('08')) {
+    return phone
+  } else if (phone.startsWith('8')) {
+    return `0${phone}`
+  } else if (phone.startsWith('62')) {
+    return `08${phone.slice(2)}`
+  }
+  return phone
+}
+
+const formatTime = (time: number): string => {
+  const minutes = Math.floor(time / 60)
+  const seconds = time % 60
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
+
+const getStatusColor = (status: string | undefined): string => {
+  switch (status?.toLowerCase()) {
+    case 'success':
+      return 'text-green-700 bg-green-50'
+    case 'failed':
+      return 'text-red-700 bg-red-50'
+    case 'on progress':
+      return 'text-blue-700 bg-blue-50'
+    default:
+      return 'text-gray-700 bg-gray-50'
+  }
+}
+
+// Main Component
 export function WhatsappSessionForm() {
-  const [account, setAccount] = useState({})
+  // State Management
+  const [account, setAccount] = useState<any>({})
+  const [whatsappLoginId, setWhatsappLoginId] = useState('')
   const [form, setForm] = useState<WhatsappSessionFormProps>({
     phone_number: ''
   })
   const [showOTP, setShowOTP] = useState(false)
   const [otp, setOTP] = useState('')
-  const [timeLeft, setTimeLeft] = useState(300) // 5 minutes in seconds
-  const slotCount = 6 // Number of OTP slots
+  const [timeLeft, setTimeLeft] = useState(300) // 5 minutes
+  const slotCount = 6
+
+  // Hooks
   const { mutateAsync, isPending } = useWhatsappLogin()
   const { mutateAsync: mutateOtp, isPending: isPendingOtp } = useSaveOtp()
+  const { data: automationDetails, isLoading: isLoadingDetails } =
+    useGetDetailWhatsappLogin({
+      id: whatsappLoginId
+    })
 
-  // Handles form submission
+  // Icons based on status
+  const getStatusIcon = (status: string | undefined) => {
+    switch (status?.toLowerCase()) {
+      case 'success':
+        return <IconCheck className="size-5 text-green-500" />
+      case 'failed':
+        return <IconX className="size-5 text-red-500" />
+      case 'on progress':
+        return <IconLoader2 className="size-5 animate-spin text-blue-500" />
+      default:
+        return <IconBrandWhatsapp className="size-5 text-gray-500" />
+    }
+  }
+
+  const handleCloseOTP = () => {
+    setShowOTP(false)
+    setOTP('')
+  }
+
+  // Form submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    let formattedPhone = form.phone_number
-
-    // Format nomor berdasarkan logika
-    if (formattedPhone.startsWith('08')) {
-      // Nomor sudah dalam format yang benar
-      formattedPhone = formattedPhone
-    } else if (formattedPhone.startsWith('8')) {
-      // Tambahkan "0" di depan jika hanya dimulai dengan "8"
-      formattedPhone = `0${formattedPhone}`
-    } else if (formattedPhone.startsWith('62')) {
-      // Ubah "62" di depan menjadi "08"
-      formattedPhone = `08${formattedPhone.slice(2)}`
-    } else {
-      return
-    }
-
-    // Update state dengan nomor yang telah diformat
+    const formattedPhone = formatPhoneNumber(form.phone_number)
     setForm({ ...form, phone_number: formattedPhone })
 
     toast.promise(
       waitForApiResponse(
         mutateAsync(form, {
-          onSuccess: (res) => {
+          onSuccess: (res: WhatsappLoginResponse) => {
             if (res?.status === 200) {
               setAccount(res?.data?.account)
+              setWhatsappLoginId(res?.data?.whatsappLogin?._id)
               setShowOTP(true)
-              setTimeLeft(300) // Reset timer ketika OTP diminta
+              setTimeLeft(300) // Reset timer
             }
           }
         })
       ),
       {
-        loading: 'Process..',
-        success: (res) => {
-          if (res?.status === 200) {
-            return res?.data?.message
-          }
+        loading: 'Memproses permintaan login...',
+        success: (res: WhatsappLoginResponse) => {
+          return res?.data?.message || 'Login request berhasil'
         },
-        error: (error) => {
-          return error?.response?.data?.error
+        error: (error: any) => {
+          return error?.response?.data?.error || 'Terjadi kesalahan'
         }
       }
     )
   }
 
-  // Handles OTP completion
+  // OTP submission handler
   const handleOTPComplete = async () => {
     try {
+      const otpData: OtpSubmitData = {
+        otp,
+        sosmed: 'Whatsapp',
+        account
+      }
+
       toast.promise(
         waitForApiResponse(
-          mutateOtp({
-            otp: otp,
-            sosmed: 'Whatsapp',
-            account: account
+          mutateOtp(otpData, {
+            onSuccess: () => {
+              handleCloseOTP()
+            }
           })
         ),
         {
-          loading: 'Process Sending To Database..',
-          success: (res) => {
-            if (res?.status === 200) {
-              return res?.data?.message
-            }
+          loading: 'Memverifikasi OTP...',
+          success: (res: any) => {
+            return res?.data?.message || 'OTP berhasil diverifikasi'
           },
-          error: (error) => {
-            return error?.response?.data?.message
+          error: (error: any) => {
+            return error?.response?.data?.message || 'Verifikasi OTP gagal'
           }
         }
       )
-    } catch (error) {}
+    } catch (error) {
+      console.error('OTP verification error:', error)
+    }
   }
 
-  // Handles OTP changes
+  // OTP input handler
   const handleOTPChange: OTPInputProps['onChange'] = (value) => {
     setOTP(value)
   }
 
-  // Countdown timer
+  // Timer effect
   useEffect(() => {
-    if (timeLeft > 0) {
+    if (timeLeft > 0 && showOTP) {
       const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000)
-      return () => clearTimeout(timer) // Cleanup on unmount or timer reset
+      return () => clearTimeout(timer)
+    } else if (timeLeft === 0) {
+      handleCloseOTP()
     }
-  }, [timeLeft])
-
-  // Format time into MM:SS
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = time % 60
-    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-  }
+  }, [timeLeft, showOTP])
 
   return (
     <div className="space-y-6">
-      {!showOTP ? (
-        <Form onSubmit={handleSubmit} className="space-y-4">
-          <SectionTitle
-            className="mb-6 p-0"
-            title="Masukan Nomor Whatsapp"
-            description="Masukan nomor Whatsapp yang valid"
-          />
-          <div>
-            <TextField
-              isRequired
-              label="Nomor Whatsapp"
-              prefix="+62"
-              className="text-sm"
-              placeholder="812*****"
-              value={form.phone_number}
-              name="whatsapp_name"
-              validate={(e) => {
-                const whatsapp_name_regex = /^8[1-9][0-9]{8,11}$/
-                return whatsapp_name_regex.test(e)
-                  ? undefined
-                  : 'Masukan nomor WhatsApp yang valid (contoh: 81234567890)'
-              }}
-              onChange={(e) => setForm({ ...form, phone_number: e })}
-              errorMessage="Masukan nomor WhatsApp yang valid"
-            />
+      {/* Automation Details */}
+      {whatsappLoginId && (
+        <div className="grid gap-4 md:grid-cols-2">
+          {/* Status Card */}
+          <div className="overflow-hidden rounded-lg border bg-white shadow-sm transition-all">
+            <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-medium text-gray-900">
+                  Status Login WhatsApp
+                </h3>
+                {getStatusIcon(automationDetails?.data?.data?.status)}
+              </div>
+            </div>
+            <div className="px-4 py-4">
+              {isLoadingDetails ? (
+                <div className="flex items-center space-x-2">
+                  <IconLoader2 className="size-4 animate-spin" />
+                  <span className="text-sm text-gray-500">
+                    Memuat status...
+                  </span>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">Status</span>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusColor(
+                        automationDetails?.data?.data?.status
+                      )}`}
+                    >
+                      {automationDetails?.data?.data?.status ||
+                        'Tidak diketahui'}
+                    </span>
+                  </div>
+                  {automationDetails?.data?.data?.reason && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500">Keterangan</span>
+                      <span className="text-sm text-gray-900">
+                        {automationDetails.data.data.reason}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="mt-2 flex w-full justify-end">
-            <Button isDisabled={isPending} type="submit" intent="light/dark">
-              {isPending ? 'Processing...' : 'Request Login'}
-            </Button>
+          {/* Account Details Card */}
+          {automationDetails?.data?.data && (
+            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+              <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
+                <h3 className="text-sm font-medium text-gray-900">
+                  Detail Akun
+                </h3>
+              </div>
+              <div className="space-y-3 p-4">
+                <div className="flex items-center space-x-2">
+                  <IconDevicePhone className="size-4 text-gray-500" />
+                  <span className="text-sm text-gray-600">
+                    {automationDetails.data.data.account.phone_number}
+                  </span>
+                </div>
+                {automationDetails.data.data.account.name && (
+                  <div className="flex items-center space-x-2">
+                    <IconPeople className="size-4 text-gray-500" />
+                    <span className="text-sm text-gray-600">
+                      {automationDetails.data.data.account.name}
+                    </span>
+                  </div>
+                )}
+                {automationDetails.data.data.worker && (
+                  <div className="flex items-center space-x-2">
+                    <IconDevices className="size-4 text-gray-500" />
+                    <span className="text-sm text-gray-600">
+                      Worker: {automationDetails.data.data.worker.name}
+                    </span>
+                  </div>
+                )}
+                <div className="flex items-center space-x-2">
+                  <IconDateTime className="size-4 text-gray-500" />
+                  <span className="text-sm text-gray-600">
+                    Last Updated:{' '}
+                    {new Date(
+                      automationDetails.data.data.updated_at
+                    ).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Phone Number Input Form */}
+      {!showOTP ? (
+        <Form onSubmit={handleSubmit} className="space-y-4">
+          <div className="rounded-lg border bg-white p-6 shadow-sm">
+            <div className="mb-6 flex items-center space-x-2">
+              <IconMessage className="size-5 text-gray-600" />
+              <h2 className="text-lg font-medium">Login WhatsApp</h2>
+            </div>
+            <div className="space-y-4">
+              <TextField
+                isRequired
+                label="Nomor WhatsApp"
+                prefix="+62"
+                className="text-sm"
+                placeholder="812*****"
+                value={form.phone_number}
+                name="whatsapp_name"
+                validate={(e) => {
+                  const whatsapp_name_regex = /^8[1-9][0-9]{8,11}$/
+                  return whatsapp_name_regex.test(e)
+                    ? undefined
+                    : 'Masukan nomor WhatsApp yang valid (contoh: 81234567890)'
+                }}
+                onChange={(e) => setForm({ ...form, phone_number: e })}
+                errorMessage="Masukan nomor WhatsApp yang valid"
+              />
+              <div className="flex justify-end">
+                <Button
+                  intent="primary"
+                  isDisabled={isPending}
+                  type="submit"
+                  className="w-full sm:w-auto"
+                >
+                  {isPending ? (
+                    <div className="flex items-center space-x-2">
+                      <IconLoader2 className="size-4 animate-spin" />
+                      <span>Memproses...</span>
+                    </div>
+                  ) : (
+                    'Request Login'
+                  )}
+                </Button>
+              </div>
+            </div>
           </div>
         </Form>
       ) : (
-        <div className="space-y-4">
-          <div className="text-center">
-            <h3 className="text-lg font-medium">Enter OTP Code</h3>
-            <p className="text-sm text-muted-fg">
-              Kode Anda akan dikirimkan melalui WhatsApp {form.phone_number}.
-              Waktu kurang dari:{' '}
-              <span className="font-semibold">{formatTime(timeLeft)}</span>
-            </p>
-          </div>
-
-          <div className="flex justify-center">
-            <InputOTP
-              maxLength={slotCount}
-              value={otp}
-              onChange={handleOTPChange}
-            >
-              <InputOTPGroup>
-                {Array.from({ length: slotCount }, (_, index) => (
-                  <InputOTPSlot key={index} index={index} />
-                ))}
-              </InputOTPGroup>
-            </InputOTP>
-          </div>
-
-          <div className="flex justify-end space-x-2">
-            <Button
-              type="button"
-              intent="light/dark"
-              isDisabled={
-                otp.length !== slotCount || timeLeft <= 0 || isPending
-              }
-              onPress={handleOTPComplete}
-            >
-              {isPending ? 'Verifying...' : 'Verify OTP'}
-            </Button>
-          </div>
-        </div>
+        /* OTP Input Modal */
+        <Modal isOpen onOpenChange={handleCloseOTP}>
+          <ModalOverlay className="backdrop-blur-sm" />
+          <ModalContent closeButton={false} className="sm:max-w-md">
+            <ModalHeader>
+              <ModalTitle className="flex items-center space-x-2">
+                <IconLock className="size-5" />
+                <span>Masukkan Kode OTP</span>
+              </ModalTitle>
+              <ModalDescription>
+                Masukkan kode OTP yang dikirim ke WhatsApp Anda
+              </ModalDescription>
+            </ModalHeader>
+            <ModalBody>
+              <div className="space-y-4">
+                <p className="text-center text-sm text-gray-600">
+                  Kode akan dikirimkan ke WhatsApp {form.phone_number}
+                </p>
+                <div className="flex items-center justify-center space-x-2">
+                  <IconDateTime className="size-4 text-gray-500" />
+                  <span className="text-sm font-medium text-gray-900">
+                    {formatTime(timeLeft)}
+                  </span>
+                </div>
+                <div className="flex justify-center py-4">
+                  <InputOTP
+                    maxLength={slotCount}
+                    value={otp}
+                    onChange={handleOTPChange}
+                  >
+                    <InputOTPGroup>
+                      {Array.from({ length: slotCount }, (_, index) => (
+                        <InputOTPSlot key={index} index={index} />
+                      ))}
+                    </InputOTPGroup>
+                  </InputOTP>
+                </div>
+              </div>
+            </ModalBody>
+            <ModalFooter>
+              <div className="flex w-full space-x-2">
+                <Button
+                  intent="primary"
+                  isDisabled={
+                    otp.length !== slotCount || timeLeft <= 0 || isPendingOtp
+                  }
+                  onPress={handleOTPComplete}
+                  className="flex-1"
+                >
+                  {isPendingOtp ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <IconLoader2 className="size-4 animate-spin" />
+                      <span>Memverifikasi...</span>
+                    </div>
+                  ) : (
+                    'Verifikasi OTP'
+                  )}
+                </Button>
+              </div>
+              {timeLeft <= 0 && (
+                <p className="mt-2 text-center text-sm text-red-600">
+                  Waktu verifikasi habis. Silakan coba lagi.
+                </p>
+              )}
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       )}
     </div>
   )
