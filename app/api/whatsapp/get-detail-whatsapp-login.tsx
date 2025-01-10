@@ -24,5 +24,6 @@ export const useGetDetailWhatsappLogin = (params: Props = {}) =>
     queryKey: ['Whatapp Detail', params],
     queryFn: () => apiFetch(params),
     refetchOnWindowFocus: true,
-    refetchOnMount: true
+    refetchOnMount: true,
+    refetchOnReconnect: true
   })
